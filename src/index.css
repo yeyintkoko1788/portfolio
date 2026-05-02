@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'AR One Sans';
+  src: url('/fonts/AROneSans-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'AR One Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-padding-top: 112px;
+}
+
+body {
+  background-color: #EDEBE6;
+  color: #1B1712;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+  border: none;
+  display: block;
+}
+
+.spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
