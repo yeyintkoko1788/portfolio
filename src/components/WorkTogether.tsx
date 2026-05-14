@@ -16,7 +16,7 @@ const inputStyle: React.CSSProperties = {
 
 export default function WorkTogether() {
   return (
-    <section id="contact" style={{ padding: '0 80px 80px' }}>
+    <section id="contact" style={{ padding: '40px 80px 80px' }}>
       {/* 2-col × 2-row grid: top content / bottom info */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: 'auto auto', gap: '0 80px' }}>
 

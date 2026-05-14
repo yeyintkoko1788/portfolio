@@ -1,6 +1,5 @@
 import dotsIcon from '../assets/images/DotsNine.png'
 import eyeIcon from '../assets/images/Eye.png'
-import containerIcon from '../assets/images/Container.png'
 
 const services = [
   {

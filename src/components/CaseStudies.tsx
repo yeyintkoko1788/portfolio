@@ -1,72 +1,16 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import circlingIcon from '../assets/images/circling-interactive-icon.png'
-import yangonDelight from '../assets/images/yangondelight.png'
-import karotteCollection from '../assets/images/karottecollection.png'
-import emailRedesign from '../assets/images/email-redesign.png'
-import fabricDecode from '../assets/images/fabric-decode.png'
-import bookCover from '../assets/images/bookcover.png'
-import adidas from '../assets/images/adidas.png'
-import vera from '../assets/images/vera.png'
-
-const projects = [
-  {
-    title: 'Yangon Delight',
-    category: 'UI/UX Design',
-    description: 'A food delivery app for a local Myanmar restaurant brand. Focused on warm aesthetics and frictionless ordering.',
-    image: yangonDelight,
-    tag: 'UI/UX Design',
-  },
-  {
-    title: 'Karotte Collection',
-    category: 'Visual Design',
-    description: 'Brand identity and visual system for a slow-fashion linen label built from scratch.',
-    image: karotteCollection,
-    tag: 'Visual Design',
-  },
-  {
-    title: 'Email Redesign',
-    category: 'Visual Design',
-    description: 'A full overhaul of a transactional email system — cleaner hierarchy, better readability, stronger brand voice.',
-    image: emailRedesign,
-    tag: 'Visual Design',
-  },
-  {
-    title: 'Fabric Decode',
-    category: 'UI/UX Design',
-    description: 'An app that helps users understand fabric compositions and care labels through a simple scan.',
-    image: fabricDecode,
-    tag: 'UI/UX Design',
-  },
-  {
-    title: 'Book Cover',
-    category: 'Visual Design',
-    description: 'Editorial cover design balancing type and image to communicate tone before the first page is read.',
-    image: bookCover,
-    tag: 'Visual Design',
-  },
-  {
-    title: 'VERA Vintage Fashion',
-    category: 'UI/UX Design',
-    description: 'Vintage shopping that teaches you why it matters, lets you try it on with AI, and makes second-hand feel first-class.',
-    image: vera,
-    tag: 'UI/UX Design',
-  },
-  {
-    title: 'Adidas Campaign',
-    category: 'UI/UX Design',
-    description: 'A conceptual campaign visual for Adidas — sport meets minimal editorial.',
-    image: adidas,
-    tag: 'UI/UX Design',
-  },
-]
+import { projects } from '../data/projects'
 
 const filters = ['All Projects', 'UI/UX Design', 'Visual Design']
 
 type Project = typeof projects[0]
 
-function Card({ p }: { p: Project }) {
+function Card({ p, onClick }: { p: Project; onClick: () => void }) {
   return (
     <div
+      onClick={onClick}
       style={{
         background: '#FFFFFF',
         borderRadius: '16px',
@@ -102,6 +46,7 @@ function Card({ p }: { p: Project }) {
 }
 
 export default function CaseStudies() {
+  const navigate = useNavigate()
   const [active, setActive] = useState('All Projects')
 
   const filtered = active === 'All Projects'
@@ -154,14 +99,14 @@ export default function CaseStudies() {
         {/* Left column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
           {filtered.filter((_, i) => i % 2 === 0).map((p) => (
-            <Card key={p.title} p={p} />
+            <Card key={p.title} p={p} onClick={() => p.slug && navigate(`/projects/${p.slug}`)} />
           ))}
         </div>
 
         {/* Right column — staggered down */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', marginTop: '160px' }}>
           {filtered.filter((_, i) => i % 2 !== 0).map((p) => (
-            <Card key={p.title} p={p} />
+            <Card key={p.title} p={p} onClick={() => p.slug && navigate(`/projects/${p.slug}`)} />
           ))}
         </div>
       </div>

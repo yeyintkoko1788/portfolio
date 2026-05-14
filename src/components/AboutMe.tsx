@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import veraImg from '../assets/images/PFP.png'
 import downloadIcon from '../assets/images/download-icon.png'
 import starIcon from '../assets/images/star-icon.png'
@@ -15,22 +17,52 @@ const info = [
 ]
 
 const interests = [
-  { text: 'Brand Identity', star: false, accent: false },
-  { text: 'Photography', star: true, accent: true },
-  { text: 'Design Systems', star: false, accent: false },
-  { text: 'Painting', star: true, accent: true },
-  { text: 'Human Behaviour', star: false, accent: false },
-  { text: 'Music', star: true, accent: false },
+  { text: 'Brand Identity', accent: false },
+  { text: 'Photography', accent: true },
+  { text: 'Design Systems', accent: false },
+  { text: 'Painting', accent: true },
+  { text: 'Human Behaviour', accent: false },
+  { text: 'Music', accent: false },
+]
+
+const timeline = [
+  {
+    year: '2016',
+    label: 'Engineering',
+    text: 'Studied Materials & Metallurgy and Integrated Chemical Engineering. A brief stint as an engineer — then a volunteering experience at an orphanage quietly changed everything.',
+  },
+  {
+    year: '2018',
+    label: 'Teaching',
+    text: 'Moved to Thailand for almost four years, teaching science and English in a lively, multicultural classroom. Somewhere in there, I rediscovered my love for drawing.',
+  },
+  {
+    year: '2021',
+    label: 'Fashion',
+    text: 'Founded Karotte Collection — a slow-fashion linen brand built from scratch, by hand, with zero business experience and zero losses.',
+  },
+  {
+    year: '2023',
+    label: 'Design',
+    text: 'Where logic meets creativity, and empathy meets structure. Today I make things that are worth paying attention to.',
+  },
 ]
 
 export default function AboutMe() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
   return (
     <section id="about-me" className="bg-[#EDEBE6]">
       {/* Main content */}
-      <div style={{ padding: '80px' }} className="grid grid-cols-[1fr_460px] gap-16 items-start">
+      <div ref={ref} style={{ padding: '80px' }} className="grid grid-cols-[1fr_460px] gap-16 items-start">
 
         {/* ── Left ── */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -32 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.7, ease: 'easeOut' as const }}
+        >
           {/* Badge */}
           <div className="flex items-center gap-2 mb-8">
             <img src={starIcon} alt="" className="w-3 h-3" />
@@ -39,19 +71,13 @@ export default function AboutMe() {
             </span>
           </div>
 
-          {/* Headline */}
+          {/* Headline — fixed: removed blank middle line */}
           <div className="mb-10">
             <h2
               style={{ fontSize: '72px', lineHeight: 1.0, letterSpacing: '-2px', color: '#1B1712' }}
               className="font-bold uppercase"
             >
               I Design
-            </h2>
-            <h2
-              style={{ fontSize: '72px', lineHeight: 1.0, letterSpacing: '-2px', color: '#1B1712' }}
-              className="font-bold uppercase"
-            >
-              &nbsp;
             </h2>
             <h2
               style={{ fontSize: '72px', lineHeight: 1.0, letterSpacing: '-2px', color: '#1B1712', marginTop: '8px' }}
@@ -74,29 +100,45 @@ export default function AboutMe() {
             </h2>
           </div>
 
-          {/* Bio */}
-          <div
-            style={{ color: '#6B6260', lineHeight: 1.8, maxWidth: '480px', marginTop: '80px', display: 'flex', flexDirection: 'column', gap: '20px' }}
-            className="text-[14px] mb-10"
-          >
-            <p>I started out surrounded by microscopes and formulas. After studying Materials & Metallurgy and Integrated Chemical Engineering, I worked briefly as an engineer until a volunteering experience at an orphanage quietly changed everything.</p>
-            <p>
-            <p></p>
-              It led me to Thailand, where I spent almost four years teaching science and English in a lively, multicultural classroom. Somewhere between lesson plans and late nights, I rediscovered my love for drawing and making things look beautiful.
-            </p>
-              Before going fully digital, I founded Karotte Collection, a slow-fashion linen brand I built from scratch, by hand, with zero business experience and zero losses. It was my first proof that I could take something from idea to existence.
-            <p>
-              That spark grew into design. Where logic meets creativity, and empathy meets structure. Today I make things that are worth paying attention to.
-            </p>
+          {/* Timeline bio */}
+          <div style={{ marginTop: '60px' }}>
+            {timeline.map((item, i) => (
+              <motion.div
+                key={item.year}
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, ease: 'easeOut' as const, delay: 0.15 + i * 0.1 }}
+                style={{ display: 'flex', gap: '24px', marginBottom: i < timeline.length - 1 ? '32px' : 0 }}
+              >
+                {/* Year + connector line */}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '40px' }}>
+                  <div style={{ fontSize: '10px', color: '#9A9490', letterSpacing: '0.1em', marginBottom: '8px', whiteSpace: 'nowrap' }}>{item.year}</div>
+                  {i < timeline.length - 1 && (
+                    <div style={{ width: '1px', flex: 1, background: '#D5CFC8' }} />
+                  )}
+                </div>
+                {/* Label + text */}
+                <div style={{ paddingBottom: i < timeline.length - 1 ? '8px' : 0 }}>
+                  <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E7363C', marginBottom: '6px' }}>
+                    {item.label}
+                  </div>
+                  <p style={{ fontSize: '14px', color: '#6B6260', lineHeight: 1.75 }}>{item.text}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Specialities */}
-          {/* <div 
-          style={{marginTop: '60px' }}>
+          {/* Specialities — re-enabled */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: 'easeOut' as const, delay: 0.55 }}
+            style={{ marginTop: '60px' }}
+          >
             <span className="text-[10px] uppercase tracking-[0.22em] text-[#9A9490] block mb-4">
               Specialities
             </span>
-            <div className="flex flex-wrap gap-2" style={{marginTop: '20px' }}>
+            <div className="flex flex-wrap gap-2" style={{ marginTop: '20px' }}>
               {specialities.map((s) => (
                 <span
                   key={s}
@@ -107,15 +149,19 @@ export default function AboutMe() {
                 </span>
               ))}
             </div>
-          </div> */}
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* ── Right ── */}
-        <div className="flex flex-col gap-3 sticky top-8">
+        <motion.div
+          initial={{ opacity: 0, x: 32 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.7, ease: 'easeOut' as const, delay: 0.15 }}
+          className="flex flex-col gap-3 sticky top-8"
+        >
           {/* Photo card */}
-          {/* Outer wrapper: paddingTop+Left creates room for border card to peek out */}
           <div className="relative" style={{ paddingTop: '12px', paddingLeft: '12px' }}>
-            {/* Border card — sits at top-left, behind main card */}
+            {/* Border card behind */}
             <div
               className="absolute rounded-2xl"
               style={{
@@ -127,17 +173,9 @@ export default function AboutMe() {
                 zIndex: 0,
               }}
             />
+            <div style={{ background: '#FFE500', width: '25px', height: '25px', borderRadius: '50%', position: 'absolute', top: '-8px', left: '4px', zIndex: 10 }} />
+            <div style={{ background: '#FF3366', width: '18px', height: '18px', borderRadius: '50%', position: 'absolute', bottom: '10px', right: '-10px', zIndex: 10 }} />
 
-            {/* Yellow dot — top left corner */}
-            <div
-              style={{ background: '#FFE500', width: '25px', height: '25px', borderRadius: '50%', position: 'absolute', top: '-8px', left: '4px', zIndex: 10 }}
-            />
-            {/* Salmon dot — bottom right corner */}
-            <div
-              style={{ background: '#FF3366', width: '18px', height: '18px', borderRadius: '50%', position: 'absolute', bottom: '10px', right: '-10px', zIndex: 10 }}
-            />
-
-            {/* Main photo card — shifted to bottom-right by the padding */}
             <div
               className="relative rounded-2xl overflow-hidden bg-white"
               style={{ width: '100%', aspectRatio: '534.937 / 670.417', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', zIndex: 1 }}
@@ -147,7 +185,6 @@ export default function AboutMe() {
                 alt="Nang"
                 className="w-full h-full object-cover object-center"
               />
-              {/* Name overlay */}
               <div
                 style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%)', paddingTop: '80px', paddingLeft: '28px', paddingBottom: '28px' }}
                 className="absolute bottom-0 left-0 right-0"
@@ -160,7 +197,7 @@ export default function AboutMe() {
             </div>
           </div>
 
-          {/* Info grid + Download — same offset as main card */}
+          {/* Info grid + Download */}
           <div style={{ paddingLeft: '12px' }} className="flex flex-col gap-3">
             <div className="grid grid-cols-2 gap-3">
               {info.map(({ label, value }) => (
@@ -176,7 +213,6 @@ export default function AboutMe() {
               ))}
             </div>
 
-            {/* Download résumé */}
             <a
               href="/resume.pdf"
               download
@@ -187,7 +223,7 @@ export default function AboutMe() {
               <img src={downloadIcon} alt="" className="w-4 h-4 group-hover:invert transition-all" />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* ── Interests strip ── */}
@@ -195,8 +231,6 @@ export default function AboutMe() {
         <span className="text-[10px] uppercase tracking-[0.22em] text-[#9A9490] shrink-0">
           Interests
         </span>
-
-        {/* Marquee */}
         <div style={{ overflow: 'hidden', flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', width: 'max-content', animation: 'marquee 20s linear infinite' }}>
             {[...interests, ...interests].map((item, i) => (
