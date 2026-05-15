@@ -7,6 +7,14 @@ const inkCorners = [
   { src: '/images/hero-ink-br.png', pos: { bottom: 0, right: '80px' }, delay: 0.45 },
 ]
 
+const stickers = [
+  { src: '/images/hero-sticker-approved.png',    pos: { left: '220px', top: '180px' },   rotate: '-6deg',  width: '128px', delay: 0.65 },
+  { src: '/images/hero-sticker-nang.png',        pos: { left: '20%',  top: '48%' },     rotate: '-12deg', width: '130px', delay: 0.80 },
+  { src: '/images/hero-sticker-sign.png',        pos: { right: '20%', top: '40%' },    rotate: '2deg',   width: '118px', delay: 0.70 },
+  { src: '/images/hero-sticker-classified.png',  pos: { right: '25%', top: '65%' },    rotate: '5deg',   width: '148px', delay: 0.90 },
+  { src: '/images/hero-sticker-barcode.png',     pos: { right: '12%', bottom: '20px' }, width: '150px', delay: 1.00 },
+]
+
 export default function NewHero() {
   const reduced = useReducedMotion()
 
@@ -32,6 +40,28 @@ export default function NewHero() {
         transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
       />
 
+      {/* Vintage world map — background texture at low opacity */}
+      <img
+        src="/images/hero-map.png"
+        draggable={false}
+        style={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: '80px',
+          right: '80px',
+          width: 'calc(100% - 160px)',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          mixBlendMode: 'multiply',
+          opacity: 0.5,
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0,
+        }}
+      />
+
       {/* Ink splatter corners — mix-blend-mode:multiply makes white areas transparent */}
       {inkCorners.map(({ src, pos, delay }) => (
         <motion.img
@@ -51,6 +81,28 @@ export default function NewHero() {
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.0, delay }}
+        />
+      ))}
+
+      {/* Stickers — scattered editorial overlays */}
+      {stickers.map(({ src, pos, rotate, width, delay }) => (
+        <motion.img
+          key={src}
+          src={src}
+          draggable={false}
+          style={{
+            position: 'absolute',
+            width,
+            rotate,
+            pointerEvents: 'none',
+            userSelect: 'none',
+            mixBlendMode: 'multiply',
+            zIndex: 3,
+            ...pos,
+          }}
+          initial={reduced ? false : { opacity: 0, scale: 0.88 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
         />
       ))}
 
@@ -90,6 +142,59 @@ export default function NewHero() {
         </motion.span>
       </div>
 
+      {/* ── Paper plane with dotted editorial flight trace ──────────────────── */}
+      {!reduced && (
+        <svg
+          viewBox="0 0 1440 700"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        >
+          <defs>
+            {/* Bottom path — lower third of hero, left → right */}
+            <path
+              id="hero-flight-path-b"
+              d="M -30 520 C 180 455, 390 575, 620 490 S 880 408, 1100 505 S 1300 558, 1470 468"
+            />
+            {/* Top path — upper third of hero, right → left */}
+            <path
+              id="hero-flight-path-t"
+              d="M 1470 175 C 1260 120, 1040 215, 820 155 S 575 100, 360 168 S 140 220, -30 158"
+            />
+          </defs>
+
+          {/* Bottom dotted trace */}
+          <use href="#hero-flight-path-b" fill="none" stroke="#111008" strokeWidth="1.2" strokeDasharray="3 10" opacity="0.5" />
+          {/* Top dotted trace */}
+          <use href="#hero-flight-path-t" fill="none" stroke="#111008" strokeWidth="1.0" strokeDasharray="3 10" opacity="0.5" />
+
+          {/* Bottom plane — larger, 16s loop */}
+          <g opacity="0.55">
+            <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" begin="1.5s">
+              <mpath href="#hero-flight-path-b" />
+            </animateMotion>
+            <path d="M 16 0 L -13 -10 L -6 0 L -13 10 Z" fill="#111008" />
+            <line x1="-6" y1="0" x2="-13" y2="0" stroke="#111008" strokeWidth="1.2" />
+          </g>
+
+          {/* Top plane — slightly smaller, different timing */}
+          <g opacity="0.45">
+            <animateMotion dur="20s" repeatCount="indefinite" rotate="auto" begin="5s">
+              <mpath href="#hero-flight-path-t" />
+            </animateMotion>
+            <path d="M 13 0 L -10 -8 L -5 0 L -10 8 Z" fill="#111008" />
+            <line x1="-5" y1="0" x2="-10" y2="0" stroke="#111008" strokeWidth="1.0" />
+          </g>
+        </svg>
+      )}
+
       {/* ── Center content ─────────────────────────────────────────────────── */}
       <div style={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', paddingTop: '48px', paddingBottom: '56px', position: 'relative', zIndex: 2 }}>
 
@@ -112,7 +217,7 @@ export default function NewHero() {
               alt="nang"
               className="select-none"
               draggable={false}
-              style={{ width: '55vw', maxWidth: '680px' }}
+              style={{ width: '65vw', maxWidth: '780px' }}
               initial={reduced ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
@@ -145,9 +250,9 @@ export default function NewHero() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <motion.p
             className="font-barlow"
-            style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.5 }}
+            style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 1 }}
             initial={reduced ? false : { opacity: 0 }}
-            animate={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 1.4 }}
           >
             Scroll to open the issue
@@ -177,12 +282,9 @@ export default function NewHero() {
         transition={{ duration: 0.8, delay: 1.35 }}
       >
         <span className="font-barlow" style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', marginLeft:'150px' }}>
-          Danang, Vietnam
+          Special Edition
         </span>
         <img src="/images/hero-star.png" alt="" draggable={false} style={{ width: '28px' }} />
-        <span className="font-barlow" style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', textAlign: 'right', marginRight:'150px' }}>
-          Open to Opportunities
-        </span>
       </motion.div>
     </section>
   )
