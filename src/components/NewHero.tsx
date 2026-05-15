@@ -8,18 +8,21 @@ const inkCorners = [
 ]
 
 const stickers = [
-  { src: '/images/hero-sticker-approved.png',    pos: { left: '220px', top: '180px' },   rotate: '-6deg',  width: '128px', delay: 0.65 },
-  { src: '/images/hero-sticker-nang.png',        pos: { left: '20%',  top: '48%' },     rotate: '-12deg', width: '130px', delay: 0.80 },
-  { src: '/images/hero-sticker-sign.png',        pos: { right: '20%', top: '40%' },    rotate: '2deg',   width: '118px', delay: 0.70 },
-  { src: '/images/hero-sticker-classified.png',  pos: { right: '25%', top: '65%' },    rotate: '5deg',   width: '148px', delay: 0.90 },
-  { src: '/images/hero-sticker-barcode.png',     pos: { right: '12%', bottom: '20px' }, width: '150px', delay: 1.00 },
+  { src: '/images/hero-sticker-approved.png',    pos: { left: '220px', top: '180px' },    rotate: '-6deg',  width: '128px', delay: 0.65 },
+  { src: '/images/hero-sticker-nang.png',        pos: { left: '20%',   top: '48%' },      rotate: '-12deg', width: '130px', delay: 0.80 },
+  { src: '/images/hero-sticker-sign.png',        pos: { right: '20%',  top: '40%' },      rotate: '2deg',   width: '118px', delay: 0.70 },
+  { src: '/images/hero-sticker-classified.png',  pos: { right: '25%',  top: '65%' },      rotate: '5deg',   width: '148px', delay: 0.90 },
+  { src: '/images/hero-sticker-barcode.png',     pos: { right: '12%',  bottom: '20px' },  width: '150px',   delay: 1.00 },
 ]
+
+// How long the unroll takes — all other delays are offset by this
+const UNROLL = 0.6
 
 export default function NewHero() {
   const reduced = useReducedMotion()
 
   return (
-    <section
+    <motion.section
       style={{
         position: 'relative',
         minHeight: 'calc(100svh - 140px)',
@@ -31,16 +34,38 @@ export default function NewHero() {
         paddingLeft: '80px',
         paddingRight: '80px',
       }}
+      initial={reduced ? false : { clipPath: 'inset(0 0 100% 0)' }}
+      animate={{ clipPath: 'inset(0 0 0% 0)' }}
+      transition={{ duration: UNROLL, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Inner editorial frame — emerges like a page coming off the press */}
+
+      {/* Roll edge — shadow that sweeps down with the unroll, simulating paper curl */}
+      {!reduced && (
+        <motion.div
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            height: '10px',
+            background: 'linear-gradient(to bottom, rgba(17,16,8,0.18), transparent)',
+            pointerEvents: 'none',
+            zIndex: 20,
+          }}
+          initial={{ top: 0 }}
+          animate={{ top: '100%' }}
+          transition={{ duration: UNROLL, ease: [0.22, 1, 0.36, 1] }}
+        />
+      )}
+
+      {/* Inner editorial frame */}
       <motion.div
         style={{ position: 'absolute', inset: '16px', pointerEvents: 'none', zIndex: 1 }}
-        initial={reduced ? false : { opacity: 0, scale: 0.984 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+        initial={reduced ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: UNROLL + 0.1 }}
       />
 
-      {/* Vintage world map — background texture at low opacity */}
+      {/* Vintage world map — background texture */}
       <img
         src="/images/hero-map.png"
         draggable={false}
@@ -62,7 +87,7 @@ export default function NewHero() {
         }}
       />
 
-      {/* Ink splatter corners — mix-blend-mode:multiply makes white areas transparent */}
+      {/* Ink splatter corners */}
       {inkCorners.map(({ src, pos, delay }) => (
         <motion.img
           key={src}
@@ -80,11 +105,11 @@ export default function NewHero() {
           }}
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.0, delay }}
+          transition={{ duration: 1.0, delay: UNROLL + delay }}
         />
       ))}
 
-      {/* Stickers — scattered editorial overlays */}
+      {/* Stickers */}
       {stickers.map(({ src, pos, rotate, width, delay }) => (
         <motion.img
           key={src}
@@ -102,18 +127,18 @@ export default function NewHero() {
           }}
           initial={reduced ? false : { opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: UNROLL + delay, ease: [0.25, 0.1, 0.25, 1] }}
         />
       ))}
 
-      {/* Stamp — settles into position with a spring press */}
+      {/* Stamp */}
       <motion.img
         src="/images/hero-stamp.png"
         draggable={false}
         style={{ position: 'absolute', top: '100px', right: '380px', width: '120px', zIndex: 3, userSelect: 'none' }}
         initial={reduced ? false : { opacity: 0, scale: 1.15, rotate: 6 }}
         animate={{ opacity: 1, scale: 1, rotate: 12 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 14, delay: 1.1 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 14, delay: UNROLL + 1.1 }}
       />
 
       {/* Left vertical label */}
@@ -123,7 +148,7 @@ export default function NewHero() {
           style={{ transform: 'rotate(-90deg)', whiteSpace: 'nowrap', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase' }}
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.25 }}
+          transition={{ duration: 0.7, delay: UNROLL + 1.25 }}
         >
           Issue No.01
         </motion.span>
@@ -136,57 +161,35 @@ export default function NewHero() {
           style={{ transform: 'rotate(90deg)', whiteSpace: 'nowrap', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase' }}
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.25 }}
+          transition={{ duration: 0.7, delay: UNROLL + 1.25 }}
         >
           Thinking in Systems
         </motion.span>
       </div>
 
-      {/* ── Paper plane with dotted editorial flight trace ──────────────────── */}
+      {/* Paper plane flight traces */}
       {!reduced && (
         <svg
           viewBox="0 0 1440 700"
           preserveAspectRatio="none"
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            zIndex: 1,
-          }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}
         >
           <defs>
-            {/* Bottom path — lower third of hero, left → right */}
-            <path
-              id="hero-flight-path-b"
-              d="M -30 520 C 180 455, 390 575, 620 490 S 880 408, 1100 505 S 1300 558, 1470 468"
-            />
-            {/* Top path — upper third of hero, right → left */}
-            <path
-              id="hero-flight-path-t"
-              d="M 1470 175 C 1260 120, 1040 215, 820 155 S 575 100, 360 168 S 140 220, -30 158"
-            />
+            <path id="hero-flight-path-b" d="M -30 520 C 180 455, 390 575, 620 490 S 880 408, 1100 505 S 1300 558, 1470 468" />
+            <path id="hero-flight-path-t" d="M 1470 175 C 1260 120, 1040 215, 820 155 S 575 100, 360 168 S 140 220, -30 158" />
           </defs>
-
-          {/* Bottom dotted trace */}
           <use href="#hero-flight-path-b" fill="none" stroke="#111008" strokeWidth="1.2" strokeDasharray="3 10" opacity="0.5" />
-          {/* Top dotted trace */}
           <use href="#hero-flight-path-t" fill="none" stroke="#111008" strokeWidth="1.0" strokeDasharray="3 10" opacity="0.5" />
-
-          {/* Bottom plane — larger, 16s loop */}
           <g opacity="0.55">
-            <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" begin="1.5s">
+            <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" begin={`${UNROLL + 1.5}s`}>
               <mpath href="#hero-flight-path-b" />
             </animateMotion>
             <path d="M 16 0 L -13 -10 L -6 0 L -13 10 Z" fill="#111008" />
             <line x1="-6" y1="0" x2="-13" y2="0" stroke="#111008" strokeWidth="1.2" />
           </g>
-
-          {/* Top plane — slightly smaller, different timing */}
           <g opacity="0.45">
-            <animateMotion dur="20s" repeatCount="indefinite" rotate="auto" begin="5s">
+            <animateMotion dur="20s" repeatCount="indefinite" rotate="auto" begin={`${UNROLL + 5}s`}>
               <mpath href="#hero-flight-path-t" />
             </animateMotion>
             <path d="M 13 0 L -10 -8 L -5 0 L -10 8 Z" fill="#111008" />
@@ -195,10 +198,9 @@ export default function NewHero() {
         </svg>
       )}
 
-      {/* ── Center content ─────────────────────────────────────────────────── */}
+      {/* Center content */}
       <div style={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', paddingTop: '48px', paddingBottom: '56px', position: 'relative', zIndex: 2 }}>
 
-        {/* ── Main content — 2-D centering: outer for position, inner for column ── */}
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
 
@@ -207,7 +209,7 @@ export default function NewHero() {
               style={{ fontSize: '11px', letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: '20px' }}
               initial={reduced ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.7, delay: UNROLL + 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             >
               Welcome to my portfolio
             </motion.p>
@@ -220,7 +222,7 @@ export default function NewHero() {
               style={{ width: '65vw', maxWidth: '780px' }}
               initial={reduced ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 1.2, delay: UNROLL + 0.28, ease: [0.25, 0.1, 0.25, 1] }}
             />
 
             <motion.p
@@ -228,7 +230,7 @@ export default function NewHero() {
               style={{ fontSize: '15px', lineHeight: '1.65', maxWidth: '460px', marginTop: '24px' }}
               initial={reduced ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.8, delay: UNROLL + 0.65, ease: [0.25, 0.1, 0.25, 1] }}
             >
               A designer who believes successful design thinking happens at the intersection of aesthetic and function.
             </motion.p>
@@ -238,7 +240,7 @@ export default function NewHero() {
               style={{ fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', marginTop: '16px' }}
               initial={reduced ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.7, delay: UNROLL + 0.85, ease: [0.25, 0.1, 0.25, 1] }}
             >
               UI/UX &amp; Visual Designer
             </motion.p>
@@ -246,14 +248,14 @@ export default function NewHero() {
           </div>
         </div>
 
-        {/* ── Scroll prompt — sits below the main content ── */}
+        {/* Scroll prompt */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <motion.p
             className="font-barlow"
             style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 1 }}
             initial={reduced ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 1.4 }}
+            transition={{ duration: 0.7, delay: UNROLL + 1.4 }}
           >
             Scroll to open the issue
           </motion.p>
@@ -266,26 +268,27 @@ export default function NewHero() {
             initial={reduced ? false : { opacity: 0 }}
             animate={reduced ? { opacity: 1 } : { opacity: 1, y: [0, 7, 0] }}
             transition={{
-              opacity: { duration: 0.6, delay: 1.55 },
-              y: { duration: 1.8, repeat: Infinity, ease: 'easeInOut', delay: 2.1, repeatDelay: 0.4 },
+              opacity: { duration: 0.6, delay: UNROLL + 1.55 },
+              y: { duration: 1.8, repeat: Infinity, ease: 'easeInOut', delay: UNROLL + 2.1, repeatDelay: 0.4 },
             }}
           />
         </div>
 
       </div>
 
-      {/* ── Bottom info strip ──────────────────────────────────────────────── */}
+      {/* Bottom info strip */}
       <motion.div
         style={{ position: 'absolute', bottom: '28px', left: '80px', right: '80px', display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', zIndex: 2 }}
         initial={reduced ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.35 }}
+        transition={{ duration: 0.8, delay: UNROLL + 1.35 }}
       >
-        <span className="font-barlow" style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', marginLeft:'150px' }}>
+        <span className="font-barlow" style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', marginLeft: '150px' }}>
           Special Edition
         </span>
         <img src="/images/hero-star.png" alt="" draggable={false} style={{ width: '28px' }} />
       </motion.div>
-    </section>
+
+    </motion.section>
   )
 }
