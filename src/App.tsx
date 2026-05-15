@@ -1,19 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import './index.css'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import AboutMe from './components/AboutMe'
-import WhatIDo from './components/WhatIDo'
-import HowIWork from './components/HowIWork'
-import CaseStudies from './components/CaseStudies'
-import FeaturedReview from './components/FeaturedReview'
-import CreativeLab from './components/CreativeLab'
-import WorkTogether from './components/WorkTogether'
-import YangonDelightDetail from './components/YangonDelightDetail'
-import NewYangonDelightDetail from './components/NewYangonDelightDetail'
-import FabricDecodeDetail from './components/FabricDecodeDetail'
-import BookCoverDetail from './components/BookCoverDetail'
 import NewNavbar from './components/NewNavbar'
 import NewHero from './components/NewHero'
 import NewAboutMe from './components/NewAboutMe'
@@ -25,6 +12,7 @@ import NewCreativeLab from './components/NewCreativeLab'
 import NewWorkTogether from './components/NewWorkTogether'
 import FloatingAvailability from './components/FloatingAvailability'
 import BackToTop from './components/BackToTop'
+import NewYangonDelightDetail from './components/NewYangonDelightDetail'
 import NewAdidasDetail from './components/NewAdidasDetail'
 import NewFabricDecodeDetail from './components/NewFabricDecodeDetail'
 import NewVeraDetail from './components/NewVeraDetail'
@@ -52,22 +40,6 @@ function ScrollToTop() {
   return null
 }
 
-function HomeV1() {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <AboutMe />
-      <WhatIDo />
-      <HowIWork />
-      <CaseStudies />
-      <FeaturedReview />
-      <CreativeLab />
-      <WorkTogether />
-    </>
-  )
-}
-
 function Home() {
   return (
     <div className="bg-[#F0E8D4] min-h-screen">
@@ -92,9 +64,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/v1" element={<HomeV1 />} />
         <Route path="/projects/yangon-delight" element={<NewYangonDelightDetail />} />
-        <Route path="/v1/projects/yangon-delight" element={<><Navbar /><YangonDelightDetail /></>} />
         <Route path="/projects/fabric-decode" element={<NewFabricDecodeDetail />} />
         <Route path="/projects/book-cover" element={<NewBookCoverDetail />} />
         <Route path="/projects/adidas-korea" element={<NewAdidasDetail />} />

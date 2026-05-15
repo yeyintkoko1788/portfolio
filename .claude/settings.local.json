@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-Regular.ttf /Users/nangnang/Project/portfolio/public/fonts/AROneSans-Regular.ttf)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-Medium.ttf /Users/nangnang/Project/portfolio/public/fonts/AROneSans-Medium.ttf)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-SemiBold.ttf /Users/nangnang/Project/portfolio/public/fonts/AROneSans-SemiBold.ttf)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-Bold.ttf /Users/nangnang/Project/portfolio/public/fonts/AROneSans-Bold.ttf)",
+      "Bash(cp \"/Users/nangnang/Desktop/AR_One_Sans/AROneSans-VariableFont_ARRR,wght.ttf\" /Users/nangnang/Project/portfolio/public/fonts/AROneSans-Variable.ttf)",
+      "Bash(mkdir -p /Users/nangnang/Project/portfolio/public/fonts)",
+      "Bash(mkdir -p /Users/nangnang/Project/portfolio/src/assets/images)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-Regular.ttf /Users/nangnang/Project/portfolio/public/fonts/)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-Medium.ttf /Users/nangnang/Project/portfolio/public/fonts/)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-SemiBold.ttf /Users/nangnang/Project/portfolio/public/fonts/)",
+      "Bash(cp /Users/nangnang/Desktop/AR_One_Sans/static/AROneSans-Bold.ttf /Users/nangnang/Project/portfolio/public/fonts/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/vera.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp \"/Users/nangnang/Desktop/portfoliohome/logo dark.png\" /Users/nangnang/Project/portfolio/src/assets/images/logo-dark.png)",
+      "Bash(cp \"/Users/nangnang/Desktop/portfoliohome/landing background.png\" /Users/nangnang/Project/portfolio/src/assets/images/landing-background.png)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/client.jpg /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp \"/Users/nangnang/Desktop/portfoliohome/available icon.png\" /Users/nangnang/Project/portfolio/src/assets/images/available-icon.png)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/yangondelight.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/karottecollection.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp \"/Users/nangnang/Desktop/portfoliohome/email redesign.png\" /Users/nangnang/Project/portfolio/src/assets/images/email-redesign.png)",
+      "Bash(cp \"/Users/nangnang/Desktop/portfoliohome/fabric decode.png\" /Users/nangnang/Project/portfolio/src/assets/images/fabric-decode.png)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/bookcover.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/Container.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/DotsNine.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/Eye.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/InstagramLogo.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(cp /Users/nangnang/Desktop/portfoliohome/LinkedinLogo.png /Users/nangnang/Project/portfolio/src/assets/images/)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)"
+    ]
+  }
+}
