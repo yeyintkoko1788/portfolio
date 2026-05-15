@@ -100,7 +100,7 @@ export default function NewAboutMe() {
             <style>{`.about-photo { filter: grayscale(100%); transition: filter 0.4s ease, transform 0.4s ease; } .about-photo:hover { filter: grayscale(0%); transform: scale(1.05); }`}</style>
             <div style={{ border: '1px solid #111008', width: '100%', aspectRatio: '3/4', overflow: 'hidden' }}>
               <img
-                src="/images/about-photo.PNG"
+                src="/images/about-photo.png"
                 alt="Nang"
                 className="about-photo"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
