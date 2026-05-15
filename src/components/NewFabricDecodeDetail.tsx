@@ -37,12 +37,14 @@ export default function NewFabricDecodeDetail() {
 
         {/* ── Project header ── */}
         <div style={{ padding: '32px 0 0', position: 'relative' }}>
-          <img
-            src="/images/fd-viewlive.png"
-            alt="View Live"
-            className="spin-slow"
-            style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px' }}
-          />
+          <a href="https://fabric-decode.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px', display: 'block', zIndex: 10 }}>
+            <img
+              src="/images/fd-viewlive.png"
+              alt="View Live"
+              className="spin-slow"
+              style={{ width: '72px', height: '72px', display: 'block' }}
+            />
+          </a>
 
           <div style={{ position: 'relative', marginBottom: '16px' }}>
             <a
@@ -114,47 +116,49 @@ export default function NewFabricDecodeDetail() {
             <div style={{ flex: 1, borderTop: '1px solid #F0EBE0', opacity: 0.3 }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '230px 1fr 1fr', borderBottom: '2px solid #111008' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr 1fr', borderBottom: '2px solid #111008' }}>
 
             {/* Stats column */}
             <div style={{ borderRight: '2px solid #111008', padding: '28px 0', display: 'flex', flexDirection: 'column' }}>
               {[
-                { value: '66%', label: 'lower searches to identify fabrics impact' },
+                { value: '66%', label: 'FEWER SEARCHES TO IDENTIFY FABRICS IMPACT\n(based on an average of 3 separate searches)' },
                 { value: '4 IN 1', label: 'outputs from a single label input' },
-                { value: '36', label: 'data points across 9 fabrics × 4 dimensions' },
+                { value: '36', label: 'data points across 9 fabricss x 4 dimensions' },
                 { value: '1 CLICK', label: 'scoring methodology, on tab open' },
               ].map(({ value, label }, i, arr) => (
                 <div key={label}>
                   <div style={{ padding: '20px 10px', textAlign: 'center' }}>
                     <p className="font-bebas" style={{ fontSize: '36px', lineHeight: 1, marginBottom: '4px' }}>{value}</p>
-                    <p className="font-oswald" style={{ fontSize: '10px', color: '#0A0A0A', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{label}</p>
+                    <p className="font-oswald" style={{ fontSize: '10px', color: '#0A0A0A', letterSpacing: '0.12em' }}>
+                      {label.split('\n').map((line, i) => <React.Fragment key={i}>{line}{i < label.split('\n').length - 1 && <br />}</React.Fragment>)}
+                    </p>
                   </div>
                   {i < arr.length - 1 && <div style={{ borderTop: '2px solid #111008', margin: '0 10px' }} />}
                 </div>
               ))}
               <div style={{ borderTop: '2px solid #111008', margin: '0 10px' }} />
-              <p className="font-eb-garamond" style={{ fontSize: '11px', lineHeight: 1.6, padding: '16px 12px', opacity: 0.6 }}>
-                Built in 5 days: 3 day design, 1 day development, 1 day of revisions on a differently scoped solo project. Designed in Figma, shipped with Claude Code.
+              <p className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.6, padding: '16px 12px', opacity: 0.6 }}>
+                 Built in 3 days. 1 day design, 1 day development, 1 day of revisions as a deliberately scoped solo project. Designed in Figma, shipped with Claude Code.
               </p>
             </div>
 
             {/* Text column */}
-            <div style={{ padding: '28px 32px' }}>
-              <p className="font-eb-garamond" style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'flex-end', gap: '2px' }}>
+            <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <p className="font-old-standard" style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'flex-end', gap: '2px' }}>
                 <span style={{ fontSize: '48px', fontWeight: 700, lineHeight: 1 }}>W</span>
-                <span className="font-barlow" style={{ fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', paddingBottom: '4px' }}>hat it is</span>
+                <span className="font-old-standard" style={{ fontSize: '15px', textTransform: 'uppercase', paddingBottom: '4px' }}>hat it is</span>
               </p>
-              <p className="font-eb-garamond" style={{ fontSize: '16px', lineHeight: 1.75, marginBottom: '20px' }}>
+              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 2, marginBottom: '20px' }}>
                 A web app that decodes garment labels into eco scores, care guidance, and shareable result cards, built for conscious shoppers who want clarity without the research.
               </p>
-              <p className="font-eb-garamond" style={{ fontSize: '13px', fontWeight: 700, marginBottom: '12px' }}>Three core features:</p>
+              <p className="font-eb-garamond" style={{ fontSize: '15px', marginBottom: '12px' }}>Three core features:</p>
               <ul style={{ listStyle: 'disc', paddingLeft: '18px', margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {[
                   'A Label Checker where you enter the fabric name from a garment label and instantly get an eco score, a material breakdown, and care instructions.',
                   'And a downloadable result card from the label check, designed to be shareable and actually worth saving.',
                   'A Fabric Library with detail pages for 9 base materials, each with sustainability data, care guidance, and a score breakdown.',
                 ].map((item, i) => (
-                  <li key={i} className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.75, opacity: 0.8 }}>
+                  <li key={i} className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 2, opacity: 0.8 }}>
                     {item}
                   </li>
                 ))}
@@ -239,7 +243,7 @@ export default function NewFabricDecodeDetail() {
           </div>
 
           {/* 3-col feature overview */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '2px solid #111008' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: '1px solid #111008' }}>
             {[
               {
                 title: 'Fabric Library',
@@ -259,7 +263,7 @@ export default function NewFabricDecodeDetail() {
             ].map(({ title, subtitle, body }, i) => (
               <div
                 key={title}
-                style={{ padding: '28px 24px 28px', borderRight: i < 2 ? '2px solid #111008' : 'none' }}
+                style={{ padding: '28px 24px 28px', borderRight: i < 2 ? '1px solid #111008' : 'none' }}
               >
                 <p className="font-playfair font-bold" style={{ fontSize: '22px', textTransform: 'uppercase', marginBottom: '8px' }}>{title}</p>
                 <p className="font-barlow" style={{ fontSize: '11px', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: '14px', opacity: 0.6 }}>{subtitle}</p>
@@ -473,6 +477,15 @@ export default function NewFabricDecodeDetail() {
         </div>
       </div>
 
+      <div className="page-px" style={{ paddingBottom: '48px', display: 'flex', justifyContent: 'center' }}>
+        <a
+          href="/"
+          className="font-oswald"
+          style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', textDecoration: 'none', color: '#111008', border: '1px solid #111008', padding: '10px 32px', display: 'inline-block' }}
+        >
+          ← Home
+        </a>
+      </div>
       <NewWorkTogether />
       <FloatingAvailability />
       <BackToTop />

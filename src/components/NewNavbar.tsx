@@ -24,7 +24,9 @@ export default function NewNavbar() {
           <span className="opacity-30">/</span>
           <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }} className="hover:opacity-60 transition-opacity px-2">About Me</a>
           <span className="opacity-30">/</span>
-          <span className="px-2 opacity-40">Resume</span>
+          <a href="#creative-lab" onClick={(e) => { e.preventDefault(); document.getElementById('creative-lab')?.scrollIntoView({ behavior: 'smooth' }) }} className="hover:opacity-60 transition-opacity px-2">Creative Lab</a>
+          <span className="opacity-30">/</span>
+          <a href="https://drive.google.com/file/d/1F8o1gPdBOWdzEWVtGvPY5QavrRzhAwNc/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity px-2">Resume</a>
           <span className="opacity-30">/</span>
           <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }} className="hover:opacity-60 transition-opacity px-2">Contact</a>
         </nav>

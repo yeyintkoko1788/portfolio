@@ -37,13 +37,7 @@ export default function NewBookCoverDetail() {
 
         {/* ── Project header ── */}
         <div style={{ padding: '32px 0 0', position: 'relative' }}>
-          <img
-            src="/images/vera-prototype-badge.png"
-            alt="See Prototype"
-            className="spin-slow"
-            style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px' }}
-          />
-
+        
           <div style={{ position: 'relative', marginBottom: '16px' }}>
             <a
               href="/#projects" onClick={(e) => { e.preventDefault(); window.history.back() }}
@@ -228,28 +222,11 @@ export default function NewBookCoverDetail() {
           </div>
 
           <div style={{ padding: '24px 0 0' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
-              {[
-                {
-                  title: 'Real user, sharper eye',
-                  body: 'Finding this site as a genuine user meant I had authentic frustrations to solve, not invented personas. The currency error and the Dutch widget stood out because I was actually trying to use the site.',
-                },
-                {
-                  title: 'Sequencing is a UX decision',
-                  body: "Moving the testimonial above the CTAs on the catering page wasn't aesthetic. It was a conversion sequencing fix, trust before the ask. That distinction is exactly the kind of thinking I want to be designing for.",
-                },
-              ].map(({ title, body }) => (
-                <div key={title} style={{ border: '1px solid #111008', padding: '24px' }}>
-                  <p className="font-eb-garamond" style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}>{title}</p>
-                  <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.75, opacity: 0.8 }}>{body}</p>
-                </div>
-              ))}
-            </div>
-            <div style={{ border: '1px solid #111008', padding: '24px', marginBottom: '32px' }}>
-              <p className="font-eb-garamond" style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}>Content before design</p>
+            <div style={{ marginBottom: '32px' }}>
               <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.75, opacity: 0.8 }}>
-                The job listings had no descriptions and two buttons that opened identical emails. I removed them rather than designing around empty content. A polished UI on top of a broken experience is still broken.
-              </p>
+A painting built for a canvas doesn't automatically translate to a cover, and every decision had to solve for that without visibly disturbing the painting's character.
+Working with an indecisive client taught me that clear reasoning matters as much as the design itself. Fast turnarounds and confident explanations kept the project moving without friction.
+Technically, rebuilding a 27–42 DPI painting into a print-ready 300 DPI wrap was its own problem to solve, one I hadn't encountered before. First client project. On time, within scope, client satisfied.              </p>
             </div>
           </div>
         </div>
@@ -289,6 +266,15 @@ export default function NewBookCoverDetail() {
         </div>
       </div>
 
+      <div className="page-px" style={{ paddingBottom: '48px', display: 'flex', justifyContent: 'center' }}>
+        <a
+          href="/"
+          className="font-oswald"
+          style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', textDecoration: 'none', color: '#111008', border: '1px solid #111008', padding: '10px 32px', display: 'inline-block' }}
+        >
+          ← Home
+        </a>
+      </div>
       <NewWorkTogether />
       <FloatingAvailability />
       <BackToTop />

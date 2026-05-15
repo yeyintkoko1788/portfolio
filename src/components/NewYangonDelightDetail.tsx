@@ -50,12 +50,14 @@ export default function NewYangonDelightDetail() {
 
         {/* ── Project header ── */}
         <div style={{ padding: '32px 0 0', position: 'relative' }}>
-          <img
-            src="/images/yd-prototype-badge.png"
-            alt="See Prototype"
-            className="spin-slow"
-            style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px' }}
-          />
+          <a href="https://www.figma.com/proto/JYpXEvfbXvKEAGZoz5x3H9/Projects?node-id=2961-14950&p=f&viewport=974%2C291%2C0.07&t=Ifik9k9Nc7uAHPxK-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2409%3A8093&show-proto-sidebar=1&page-id=716%3A2587" target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px', display: 'block', zIndex: 10 }}>
+            <img
+              src="/images/yd-prototype-badge.png"
+              alt="See Prototype"
+              className="spin-slow"
+              style={{ width: '72px', height: '72px', display: 'block' }}
+            />
+          </a>
 
           <div style={{ position: 'relative', marginBottom: '16px' }}>
             <a
@@ -138,7 +140,7 @@ export default function NewYangonDelightDetail() {
             {/* Stats column */}
             <div style={{ borderRight: '2px solid #111008', padding: '28px 0', display: 'flex', flexDirection: 'column' }}>
               {[
-                { value: '33%', label: 'navigation complexity reduced' },
+                { value: '1', label: 'click to reach any core action' },
                 { value: '3', label: 'modal flows introduced' },
                 { value: '1', label: 'account dashboard built' },
                 { value: '6', label: 'pages redesigned' },
@@ -154,16 +156,10 @@ export default function NewYangonDelightDetail() {
             </div>
 
             {/* Text column */}
-            <div style={{ padding: '28px 32px' }}>
-              <p className="font-eb-garamond" style={{ fontSize: '18px', lineHeight: 1.7, marginBottom: '20px' }}>
-                <span style={{ fontSize: '31px', fontWeight: 700, display: 'inline-block', verticalAlign: 'baseline', lineHeight: 1 }}>A</span>n award-winning restaurant with a website that worked against it.
-              </p>
-              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px' }}>
-                Yangon Delight is Amsterdam-Oost's pioneering Burmese restaurant, raised 8+ by Het Parool and listed among the city's top 10. Despite that reputation, the website had 9 navigation items with the 3 most critical user actions buried inside a collapsed dropdown.
-              </p>
-              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.8 }}>
-                There was no account management, no activity tracking, and no stable hierarchy guiding visitors toward any action. I redesigned the full digital experience across 6 pages and 3 modal flows as a self-initiated concept project, found and chosen as a real user.
-              </p>
+            <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 2, marginBottom: '20px' }}>
+                <span style={{ fontSize: '31px', fontWeight: 700, display: 'inline-block', verticalAlign: 'baseline', lineHeight: 1 }}>A</span>n award-winning restaurant with a website that worked against it.                 Yangon Delight is Amsterdam-Oost's pioneering Burmese restaurant, rated 8+ by Het Parool and listed among the city's top 10. Despite that reputation, the website buried its three most important actions such as Order Online, Catering, and Reserve inside a dropdown alongside a blog and community pages.
+                                There was no account management, no activity tracking, and no clear hierarchy guiding visitors toward any action. I redesigned the 6 core pages and 3 modal flows that serve the restaurant's primary purpose: get people to eat, order, or reserve.              </p>
             </div>
 
             {/* Image column */}
@@ -257,11 +253,11 @@ export default function NewYangonDelightDetail() {
               <h3 className="font-playfair font-regular" style={{ fontSize: '16px', marginBottom: '24px' }}>The original nav forced users into a dropdown to find the most-used pages. The redesign surfaces all core actions at the top level and reduces total items by 33%.</h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div>
-                  <div style={beforeAfterLabel('before')}>Before — 9 items, core actions hidden</div>
+                  <div style={beforeAfterLabel('before')}>BEFORE — CORE ACTIONS HIDDEN IN DROPDOWN</div>
                   <img src="/images/yd-navog.png" alt="Original navigation" style={{ width: '100%', display: 'block', border: '1px solid #111008', borderTop: 'none' }} />
                 </div>
                 <div>
-                  <div style={beforeAfterLabel('after')}>After — 6 items, all top actions visible</div>
+                  <div style={beforeAfterLabel('after')}>AFTER — ALL CORE ACTIONS SURFACED</div>
                   <img src="/images/yd-navre.png" alt="Redesigned navigation" style={{ width: '100%', display: 'block', border: '1px solid #111008', borderTop: 'none' }} />
                 </div>
               </div>
@@ -364,7 +360,7 @@ export default function NewYangonDelightDetail() {
                 },
                 {
                   title: 'Navigation is a trust signal',
-                  body: "Cutting from 9 nav items to 6 wasn't about minimalism. It was about respect for the user's time. A restaurant that makes you hunt for the menu is a restaurant that doesn't understand why you came.",
+                  body: "A restaurant website that hides Order, Catering, and Reserve inside a dropdown doesn't understand why people visit. The redesign puts every core action one click away, not as a minimalism exercise, but as basic respect for the user's intent.",
                 },
               ].map(({ title, body }) => (
                 <div key={title} style={{ border: '1px solid #111008', padding: '24px' }}>
@@ -377,8 +373,7 @@ export default function NewYangonDelightDetail() {
             <div style={{ border: '1px solid #111008', padding: '24px' }}>
               <p className="font-eb-garamond" style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}>Content before design</p>
               <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.75, opacity: 0.8 }}>
-                The job listings had no descriptions and two buttons that opened identical emails. I removed them rather than designing around empty content. A polished UI on top of a broken experience is still broken.
-              </p>
+The job listings had no descriptions and two buttons that opened identical emails. I removed them rather than designing around empty content. A polished UI on top of a broken experience is still broken.              </p>
             </div>
           </div>
         </div>
@@ -437,6 +432,15 @@ export default function NewYangonDelightDetail() {
         </div>
       </div>
 
+      <div className="page-px" style={{ paddingBottom: '48px', display: 'flex', justifyContent: 'center' }}>
+        <a
+          href="/"
+          className="font-oswald"
+          style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', textDecoration: 'none', color: '#111008', border: '1px solid #111008', padding: '10px 32px', display: 'inline-block' }}
+        >
+          ← Home
+        </a>
+      </div>
       <NewWorkTogether />
       <FloatingAvailability />
       <BackToTop />

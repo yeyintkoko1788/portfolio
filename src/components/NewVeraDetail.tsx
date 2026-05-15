@@ -38,12 +38,14 @@ export default function NewVeraDetail() {
 
         {/* ── Project header ── */}
         <div style={{ padding: '32px 0 0', position: 'relative' }}>
-          <img
-            src="/images/vera-prototype-badge.png"
-            alt="See Prototype"
-            className="spin-slow"
-            style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px' }}
-          />
+          <a href="https://www.figma.com/proto/JYpXEvfbXvKEAGZoz5x3H9/Projects?node-id=296-2912&p=f&viewport=488%2C-611%2C0.08&t=h0oKQRLnWRVmV22G-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=296%3A2912&page-id=243%3A2386" target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px', display: 'block', zIndex: 10 }}>
+            <img
+              src="/images/vera-prototype-badge.png"
+              alt="See Prototype"
+              className="spin-slow"
+              style={{ width: '72px', height: '72px', display: 'block' }}
+            />
+          </a>
 
           <div style={{ position: 'relative', marginBottom: '16px' }}>
             <a
@@ -126,7 +128,7 @@ export default function NewVeraDetail() {
                   <span style={{ fontSize: '22px', fontWeight: 700, lineHeight: 1, marginRight: '2px' }}>R</span>educe purchase hesitation for high-ticket items through AI virtual try-on, studies show virtual try-on reduces return rates by up to 30% in fashion e-commerce (Forrester Research).
                 </p>
                 <p className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.8 }}>
-                  <span style={{ fontSize: '22px', fontWeight: 700, lineHeight: 1, marginRight: '2px' }}>B</span>uild trust at every touchpoint across a full purchase journey: browse — filter — try-on — checkout. Integrate sustainability messaging without making it the product, buying secondhand extends a garment's life and reduces demand for new production.
+                  <span style={{ fontSize: '22px', fontWeight: 700, lineHeight: 1, marginRight: '2px' }}>B</span>uild trust at every touchpoint across a full purchase journey: browse → filter → try-on → checkout. Integrate sustainability messaging without making it the product, buying secondhand extends a garment's life and reduces demand for new production.
                 </p>
                 <p className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.8 }}>
                   <span style={{ fontSize: '22px', fontWeight: 700, lineHeight: 1, marginRight: '2px' }}>W</span>ho it's for: Luxury fashion buyers aged 25-45 who care about quality, provenance, and conscious consumption and expect a premium digital experience to match.
@@ -420,6 +422,15 @@ export default function NewVeraDetail() {
         </div>
       </div>
 
+      <div className="page-px" style={{ paddingBottom: '48px', display: 'flex', justifyContent: 'center' }}>
+        <a
+          href="/"
+          className="font-oswald"
+          style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', textDecoration: 'none', color: '#111008', border: '1px solid #111008', padding: '10px 32px', display: 'inline-block' }}
+        >
+          ← Home
+        </a>
+      </div>
       <NewWorkTogether />
       <FloatingAvailability />
       <BackToTop />

@@ -37,12 +37,6 @@ export default function NewKarotteDetail() {
 
         {/* ── Project header ── */}
         <div style={{ padding: '32px 0 0', position: 'relative' }}>
-          <img
-            src="/images/karotte-logo-arrow.png"
-            alt=""
-            className="spin-slow"
-            style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px' }}
-          />
 
           <div style={{ position: 'relative', marginBottom: '16px' }}>
             <a
@@ -270,6 +264,15 @@ export default function NewKarotteDetail() {
         </div>
       </div>
 
+      <div className="page-px" style={{ paddingBottom: '48px', display: 'flex', justifyContent: 'center' }}>
+        <a
+          href="/"
+          className="font-oswald"
+          style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', textDecoration: 'none', color: '#111008', border: '1px solid #111008', padding: '10px 32px', display: 'inline-block' }}
+        >
+          ← Home
+        </a>
+      </div>
       <NewWorkTogether />
       <FloatingAvailability />
       <BackToTop />

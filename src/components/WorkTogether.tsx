@@ -94,13 +94,13 @@ export default function WorkTogether() {
               Social
             </span>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="www.linkedin.com/in/zin-mar-soe" target="_blank" rel="noopener noreferrer">
                 <img src={linkedinLogo} alt="LinkedIn" style={{ width: '22px', height: '22px', opacity: 0.6 }} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/nang.atelier?igsh=MWpmbTJjMnU5c2w3Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
                 <img src={instagramLogo} alt="Instagram" style={{ width: '22px', height: '22px', opacity: 0.6 }} />
               </a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.tiktok.com/@nang.atelier?_r=1&_t=ZS-96Ndwo9zTD6" target="_blank" rel="noopener noreferrer">
                 <img src={tiktokLogo} alt="TikTok" style={{ width: '22px', height: '22px', opacity: 0.6 }} />
               </a>
             </div>

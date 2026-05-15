@@ -97,11 +97,13 @@ export default function NewAboutMe() {
             <span style={{ position: 'absolute', top: '-4px', right: '30px', width: '8px', height: '8px', backgroundColor: '#111008', display: 'block', zIndex: 2 }} />
             <span style={{ position: 'absolute', bottom: '120px', left: '-4px', width: '8px', height: '8px', backgroundColor: '#111008', display: 'block', zIndex: 2 }} />
             <span style={{ position: 'absolute', bottom: '-4px', right: '-4px', width: '8px', height: '8px', backgroundColor: '#111008', display: 'block', zIndex: 2 }} />
+            <style>{`.about-photo { filter: grayscale(100%); transition: filter 0.4s ease, transform 0.4s ease; } .about-photo:hover { filter: grayscale(0%); transform: scale(1.05); }`}</style>
             <div style={{ border: '1px solid #111008', width: '100%', aspectRatio: '3/4', overflow: 'hidden' }}>
               <img
-                src="/images/about-photo.png"
+                src="/images/about-photo.PNG"
                 alt="Nang"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', filter: 'grayscale(100%)', display: 'block' }}
+                className="about-photo"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
               />
             </div>
           </div>
@@ -134,7 +136,7 @@ export default function NewAboutMe() {
           </div>
           <div style={{ paddingTop: '12px', paddingBottom: '24px' }}>
             <p className="font-old-standard" style={{ fontSize: '13px', lineHeight: '2' }}>Painting</p>
-            <p className="font-old-standard" style={{ fontSize: '13px', lineHeight: '2' }}>Art Drawing</p>
+            <p className="font-old-standard" style={{ fontSize: '13px', lineHeight: '2' }}>Art Directing</p>
           </div>
 
           {/* Currently based in */}

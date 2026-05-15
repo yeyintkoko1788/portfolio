@@ -1,4 +1,6 @@
-import React from 'react'
+import { useState } from 'react'
+
+const FORMSPREE_ID = 'mkoyllby'
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -36,6 +38,31 @@ const labelStyle: React.CSSProperties = {
 }
 
 export default function NewWorkTogether() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setName(''); setEmail(''); setMessage('')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <section id="contact" style={{ backgroundColor: '#F0E8D4', color: '#111008' }}>
       <div className="page-px" style={{ paddingBottom: '48px' }}>
@@ -75,16 +102,24 @@ export default function NewWorkTogether() {
               Available for full-time roles and freelance projects.
               Reach out with a brief description of the work.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
-              <input placeholder="Your Name" style={inputStyle} />
-              <input placeholder="Your Email" type="email" style={inputStyle} />
-            </div>
-            <textarea
-              placeholder="Your Message"
-              rows={5}
-              style={{ ...inputStyle, resize: 'none', marginBottom: '16px', display: 'block' }}
-            />
-            <button type="submit" style={buttonStyle}>Send message →</button>
+            <form onSubmit={handleSubmit}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
+                <input placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} required style={inputStyle} />
+                <input placeholder="Your Email" type="email" value={email} onChange={e => setEmail(e.target.value)} required style={inputStyle} />
+              </div>
+              <textarea
+                placeholder="Your Message"
+                rows={5}
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                required
+                style={{ ...inputStyle, resize: 'none', marginBottom: '16px', display: 'block' }}
+              />
+              <button type="submit" disabled={status === 'sending'} style={{ ...buttonStyle, opacity: status === 'sending' ? 0.5 : 1 }}>
+                {status === 'sending' ? 'Sending…' : status === 'success' ? 'Sent ✓' : 'Send message →'}
+              </button>
+              {status === 'error' && <p className="font-oswald" style={{ fontSize: '10px', marginTop: '8px', opacity: 0.6 }}>Something went wrong. Try emailing directly.</p>}
+            </form>
           </div>
 
           {/* Col 2 — Response Time / Based in Vietnam */}
@@ -99,7 +134,7 @@ export default function NewWorkTogether() {
           <div style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}>
             <span className="font-barlow" style={labelStyle}>Find Me At</span>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/zin-mar-soe"
               target="_blank"
               rel="noopener noreferrer"
               className="font-eb-garamond"
@@ -117,7 +152,7 @@ export default function NewWorkTogether() {
               LinkedIn /
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/nang.atelier?igsh=MWpmbTJjMnU5c2w3Mw%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               className="font-eb-garamond"
@@ -135,7 +170,7 @@ export default function NewWorkTogether() {
               Instagram /
             </a>
             <a
-              href="https://tiktok.com"
+              href="https://www.tiktok.com/@nang.atelier?_r=1&_t=ZS-96Ndwo9zTD6"
               target="_blank"
               rel="noopener noreferrer"
               className="font-eb-garamond"

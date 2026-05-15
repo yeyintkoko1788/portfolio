@@ -31,6 +31,10 @@ import NewVeraDetail from './components/NewVeraDetail'
 import NewBookCoverDetail from './components/NewBookCoverDetail'
 import NewEmailDetail from './components/NewEmailDetail'
 import NewKarotteDetail from './components/NewKarotteDetail'
+import NewPostersDetail from './components/NewPostersDetail'
+import NewPaintingDetail from './components/NewPaintingDetail'
+import NewProcessDetail from './components/NewProcessDetail'
+import NewInteractionsDetail from './components/NewInteractionsDetail'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -97,6 +101,10 @@ export default function App() {
         <Route path="/projects/vera" element={<NewVeraDetail />} />
         <Route path="/projects/email-redesign" element={<NewEmailDetail />} />
         <Route path="/projects/karotte" element={<NewKarotteDetail />} />
+        <Route path="/lab/posters" element={<NewPostersDetail />} />
+        <Route path="/lab/painting" element={<NewPaintingDetail />} />
+        <Route path="/lab/process" element={<NewProcessDetail />} />
+        <Route path="/lab/interactions" element={<NewInteractionsDetail />} />
       </Routes>
     </>
   )

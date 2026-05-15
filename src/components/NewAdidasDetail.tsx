@@ -37,12 +37,14 @@ export default function NewAdidasDetail() {
 
         {/* ── Project header ── */}
         <div style={{ padding: '32px 0 0', position: 'relative' }}>
-          <img
-            src="/images/ad-prototype-badge.png"
-            alt="See Prototype"
-            className="spin-slow"
-            style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px' }}
-          />
+          <a href="https://www.figma.com/proto/JYpXEvfbXvKEAGZoz5x3H9/Projects?node-id=70-804&p=f&viewport=560%2C472%2C0.08&t=gi3CJjkE8rFsQbLF-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A4331" target="_blank" rel="noopener noreferrer" style={{ position: 'absolute', top: '12px', right: '0', width: '72px', height: '72px', display: 'block', zIndex: 10 }}>
+            <img
+              src="/images/ad-prototype-badge.png"
+              alt="See Prototype"
+              className="spin-slow"
+              style={{ width: '72px', height: '72px', display: 'block' }}
+            />
+          </a>
 
           <div style={{ position: 'relative', marginBottom: '16px' }}>
             <a
@@ -122,11 +124,10 @@ export default function NewAdidasDetail() {
             }}
           >
             {/* Stats column */}
-            <div style={{ borderRight: '2px solid #111008', padding: '28px 0', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ borderRight: '2px solid #111008', padding: '28px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               {[
                 { value: '100%', label: 'navigation completion' },
                 { value: '4', label: 'navigation paths added' },
-                { value: '1.2M+', label: 'fans reached' },
                 { value: '0', label: 'new content required' },
               ].map(({ value, label }, i, arr) => (
                 <div key={label}>
@@ -140,15 +141,9 @@ export default function NewAdidasDetail() {
             </div>
 
             {/* Text column */}
-            <div style={{ padding: '28px 32px' }}>
-              <p className="font-eb-garamond" style={{ fontSize: '18px', lineHeight: 1.7, marginBottom: '20px' }}>
-                <span style={{ fontSize: '31px', fontWeight: 700, display: 'inline-block', verticalAlign: 'baseline', lineHeight: 1 }}>A</span>didas Korea ran a collaboration with ENHYPEN's Sunghoon centered on the Taekwondo series, a drop that sold out across Korea with in-store purchase limits enforced due to demand.
-              </p>
-              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px' }}>
-                The campaign included a fully built lookbook that remains live today. Despite the campaign's reach, the lookbook had 0 navigation paths from the homepage. Searching "Lookbook" or "Sunghoon" returned 0 results.
-              </p>
-              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.8 }}>
-                This redesign adds 4 targeted fixes: a Campaign menu entry, a columns listing, a homepage feature, and a direct lookbook CTA — increasing navigation access to the campaign from 0 to 100%.
+            <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 2, marginBottom: '20px' }}>
+                <span style={{ fontSize: '31px', fontWeight: 700, display: 'inline-block', verticalAlign: 'baseline', lineHeight: 1 }}>A</span>didas Korea ran a collaboration with ENHYPEN's Sunghoon centered on the Taekwondo series. The campaign included a fully built lookbook that remains live today. Despite the campaign's scale, the lookbook had 0 navigation paths from the homepage. Searching "Lookbook" or "Sunghoon" returned 0 results. This redesign adds 4 targeted fixes are a Campaign menu entry, a submenu listing, a homepage feature card, and a direct lookbook CTA, increasing navigation access from 0 to 100%.
               </p>
             </div>
 
@@ -280,29 +275,9 @@ export default function NewAdidasDetail() {
           </div>
 
           <div style={{ padding: '24px 0 0' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
-              {[
-                {
-                  title: 'Dead ends are invisible to the team that built the site',
-                  body: 'The lookbook existed. The campaign was real. But no one on the inside noticed the navigation gap because they already knew where everything was. It took an outsider actually trying to find it.',
-                },
-                {
-                  title: 'Reach without access is wasted reach',
-                  body: '1.2M+ fans engaged with the campaign off-site. The website should have been the destination — instead it was a dead end. Four additions fixed that without a single piece of new content.',
-                },
-              ].map(({ title, body }) => (
-                <div key={title} style={{ border: '1px solid #111008', padding: '24px' }}>
-                  <p className="font-eb-garamond" style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}>{title}</p>
-                  <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.75, opacity: 0.8 }}>{body}</p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ border: '1px solid #111008', padding: '24px' }}>
-              <p className="font-eb-garamond" style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}>Navigation is the product</p>
+            <div>
               <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.75, opacity: 0.8 }}>
-                The campaign content was good. The design was polished. What failed was navigation — and navigation is the product. If a user can't find it, it doesn't exist.
-              </p>
+                Navigation gaps are harder to catch than broken flows because nothing visibly fails.              </p>
             </div>
           </div>
         </div>
@@ -360,6 +335,15 @@ export default function NewAdidasDetail() {
         </div>
       </div>
 
+      <div className="page-px" style={{ paddingBottom: '48px', display: 'flex', justifyContent: 'center' }}>
+        <a
+          href="/"
+          className="font-oswald"
+          style={{ fontSize: '11px', letterSpacing: '0.22em', textTransform: 'uppercase', textDecoration: 'none', color: '#111008', border: '1px solid #111008', padding: '10px 32px', display: 'inline-block' }}
+        >
+          ← Home
+        </a>
+      </div>
       <NewWorkTogether />
       <FloatingAvailability />
       <BackToTop />
