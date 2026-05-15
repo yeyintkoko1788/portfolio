@@ -1,4 +1,9 @@
+import { motion, useReducedMotion } from 'framer-motion'
+import { fadeIn, viewportOnce } from '../lib/motionConfig'
+
 export default function NewFeaturedReview() {
+  const reduced = useReducedMotion()
+
   return (
     <section style={{ backgroundColor: '#F0E8D4', color: '#111008' }}>
       <div className="page-px" style={{ paddingBottom: '48px' }}>
@@ -10,11 +15,23 @@ export default function NewFeaturedReview() {
           </h2>
         </div>
 
-        {/* Review card */}
-        <div style={{ backgroundColor: '#E8E2D4', border: '1px solid #111008', borderTop: 'none', padding: '48px 24px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {/* Review card — fades and rises into view */}
+        <motion.div
+          style={{ backgroundColor: '#E8E2D4', border: '1px solid #111008', borderTop: 'none', padding: '48px 24px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          initial={reduced ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+        >
 
           {/* Avatar with quote badge */}
-          <div style={{ position: 'relative', marginBottom: '28px' }}>
+          <motion.div
+            style={{ position: 'relative', marginBottom: '28px' }}
+            initial={reduced ? false : 'hidden'}
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeIn}
+          >
             <img
               src="/images/client.jpg"
               alt="Lee John Nottingham"
@@ -28,7 +45,6 @@ export default function NewFeaturedReview() {
                 display: 'block',
               }}
             />
-            {/* Quote badge */}
             <span style={{
               position: 'absolute',
               bottom: '0',
@@ -46,7 +62,7 @@ export default function NewFeaturedReview() {
             }}>
               "
             </span>
-          </div>
+          </motion.div>
 
           {/* Quote */}
           <p className="font-old-standard" style={{ fontSize: '16px', lineHeight: '1.8', textAlign: 'center', maxWidth: '760px', marginBottom: '24px' }}>
@@ -66,7 +82,7 @@ export default function NewFeaturedReview() {
             Client
           </p>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   )

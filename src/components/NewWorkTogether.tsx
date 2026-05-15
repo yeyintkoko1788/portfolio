@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { fadeUp, staggerContainer, viewportOnce } from '../lib/motionConfig'
 
 const FORMSPREE_ID = 'mkoyllby'
 
@@ -42,6 +44,7 @@ export default function NewWorkTogether() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const reduced = useReducedMotion()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -67,8 +70,8 @@ export default function NewWorkTogether() {
     <section id="contact" style={{ backgroundColor: '#F0E8D4', color: '#111008' }}>
       <div className="page-px" style={{ paddingBottom: '48px' }}>
 
-        {/* Header bar */}
-        <div
+        {/* Header bar — ink fade-in */}
+        <motion.div
           style={{
             backgroundColor: '#111008',
             color: '#F0EBE0',
@@ -77,6 +80,10 @@ export default function NewWorkTogether() {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
+          initial={reduced ? false : { opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <h2
             className="font-playfair font-bold uppercase"
@@ -84,19 +91,26 @@ export default function NewWorkTogether() {
           >
             Let's Work Together!
           </h2>
-        </div>
+        </motion.div>
 
         {/* 4-column grid */}
-        <div
+        <motion.div
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr 1fr 0.8fr',
             border: '1px solid #111008',
             borderTop: 'none',
           }}
+          initial={reduced ? false : 'hidden'}
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={staggerContainer}
         >
           {/* Col 1 — Available For + Form */}
-          <div style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}
+          >
             <span className="font-eb-garamond" style={labelStyle}>Available For</span>
             <p className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.75, marginBottom: '24px' }}>
               Available for full-time roles and freelance projects.
@@ -104,34 +118,54 @@ export default function NewWorkTogether() {
             </p>
             <form onSubmit={handleSubmit}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
-                <input placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} required style={inputStyle} />
-                <input placeholder="Your Email" type="email" value={email} onChange={e => setEmail(e.target.value)} required style={inputStyle} />
+                {/* Ink-draw underline expands on focus via .contact-field CSS class */}
+                <div className="contact-field">
+                  <input placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} required style={inputStyle} />
+                </div>
+                <div className="contact-field">
+                  <input placeholder="Your Email" type="email" value={email} onChange={e => setEmail(e.target.value)} required style={inputStyle} />
+                </div>
               </div>
-              <textarea
-                placeholder="Your Message"
-                rows={5}
-                value={message}
-                onChange={e => setMessage(e.target.value)}
-                required
-                style={{ ...inputStyle, resize: 'none', marginBottom: '16px', display: 'block' }}
-              />
-              <button type="submit" disabled={status === 'sending'} style={{ ...buttonStyle, opacity: status === 'sending' ? 0.5 : 1 }}>
+              <div className="contact-field">
+                <textarea
+                  placeholder="Your Message"
+                  rows={5}
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  required
+                  style={{ ...inputStyle, resize: 'none', marginBottom: '16px', display: 'block' }}
+                />
+              </div>
+              {/* Stamp press: scale down slightly on click */}
+              <motion.button
+                type="submit"
+                disabled={status === 'sending'}
+                style={{ ...buttonStyle, opacity: status === 'sending' ? 0.5 : 1 }}
+                whileTap={reduced ? {} : { scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+              >
                 {status === 'sending' ? 'Sending…' : status === 'success' ? 'Sent ✓' : 'Send message →'}
-              </button>
+              </motion.button>
               {status === 'error' && <p className="font-oswald" style={{ fontSize: '10px', marginTop: '8px', opacity: 0.6 }}>Something went wrong. Try emailing directly.</p>}
             </form>
-          </div>
+          </motion.div>
 
           {/* Col 2 — Response Time / Based in Vietnam */}
-          <div style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}
+          >
             <span className="font-barlow" style={labelStyle}>Response Time</span>
             <p className="font-eb-garamond" style={{ fontSize: '16px', marginBottom: '48px' }}>Within 12-24 hours</p>
             <span className="font-barlow" style={labelStyle}>Based in Vietnam</span>
             <p className="font-eb-garamond" style={{ fontSize: '16px' }}>Work globally</p>
-          </div>
+          </motion.div>
 
           {/* Col 3 — Find Me At */}
-          <div style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            style={{ borderRight: '1px solid #111008', padding: '28px 24px' }}
+          >
             <span className="font-barlow" style={labelStyle}>Find Me At</span>
             <a
               href="https://www.linkedin.com/in/zin-mar-soe"
@@ -187,10 +221,11 @@ export default function NewWorkTogether() {
             >
               Tiktok /
             </a>
-          </div>
+          </motion.div>
 
           {/* Col 4 — Logo */}
-          <div
+          <motion.div
+            variants={fadeUp}
             style={{
               padding: '28px 24px',
               display: 'flex',
@@ -213,8 +248,8 @@ export default function NewWorkTogether() {
                 atelier
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Footer bar */}
         <div

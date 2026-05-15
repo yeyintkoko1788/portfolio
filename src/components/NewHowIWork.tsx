@@ -1,3 +1,6 @@
+import { motion, useReducedMotion } from 'framer-motion'
+import { stampReveal, staggerContainer, viewportOnce } from '../lib/motionConfig'
+
 const steps = [
   {
     step: 'Step 1',
@@ -32,27 +35,43 @@ const steps = [
 ]
 
 export default function NewHowIWork() {
+  const reduced = useReducedMotion()
+
   return (
     <section className="bg-[#F0E8D4] text-[#111008]">
       <div className="page-px" style={{ paddingBottom: '48px' }}>
         <div style={{ border: '1px solid #111008' }}>
 
-          {/* Title bar */}
-          <div style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '14px 24px' }}>
+          {/* Title bar — ink fade-in */}
+          <motion.div
+            style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '14px 24px' }}
+            initial={reduced ? false : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <h2 className="font-playfair font-bold uppercase" style={{ fontSize: '32px', letterSpacing: '0.1em' }}>
               How I Work
             </h2>
-          </div>
+          </motion.div>
 
-          {/* Steps grid — 2 rows of 3 */}
+          {/* Steps grid — 2 rows of 3, each row stamps in with stagger */}
           <div style={{ padding: '0 24px 32px' }}>
             {[steps.slice(0, 3), steps.slice(3, 6)].map((row, rowIndex) => (
-              <div
+              <motion.div
                 key={rowIndex}
+                initial={reduced ? false : 'hidden'}
+                whileInView="visible"
+                viewport={viewportOnce}
+                variants={staggerContainer}
                 style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', paddingTop: '28px', marginBottom: rowIndex === 0 ? '8px' : '0' }}
               >
                 {row.map((item, colIndex) => (
-                  <div key={item.step} style={{ paddingRight: colIndex < 2 ? '32px' : '0' }}>
+                  <motion.div
+                    key={item.step}
+                    variants={stampReveal}
+                    style={{ paddingRight: colIndex < 2 ? '32px' : '0' }}
+                  >
                     {/* Step label */}
                     <p className="font-barlow" style={{ fontSize: '11px', letterSpacing: '0.12em', opacity: 0.6, marginBottom: '10px' }}>
                       {item.step}
@@ -60,7 +79,6 @@ export default function NewHowIWork() {
 
                     {/* Horizontal line with dot */}
                     <div style={{ position: 'relative', display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-                      {/* Dot */}
                       <span style={{
                         width: '12px',
                         height: '12px',
@@ -69,7 +87,6 @@ export default function NewHowIWork() {
                         flexShrink: 0,
                         display: 'block',
                       }} />
-                      {/* Line extending to the right */}
                       <span style={{
                         flex: 1,
                         height: '1px',
@@ -88,9 +105,9 @@ export default function NewHowIWork() {
                     <p className="font-old-standard" style={{ fontSize: '13px', lineHeight: '1.7' }}>
                       {item.text}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             ))}
           </div>
 

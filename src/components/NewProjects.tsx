@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion, useReducedMotion } from 'framer-motion'
+import { fadeUp, staggerContainer, paperSpring, viewportOnce } from '../lib/motionConfig'
 
 const projects = [
   {
@@ -72,6 +74,7 @@ const filters = ['All Projects', 'UI/UX Designs', 'Visual Designs']
 export default function NewProjects() {
   const [activeFilter, setActiveFilter] = useState('All Projects')
   const navigate = useNavigate()
+  const reduced = useReducedMotion()
 
   const rows = [projects.slice(0, 2), projects.slice(2, 4), projects.slice(4, 7)]
   const visibleRows = rows
@@ -82,20 +85,34 @@ export default function NewProjects() {
       return true
     })
 
+  // Brief delay lets the press animation feel tactile before navigation
+  const handleCardClick = (href: string) => {
+    if (href === '#') return
+    if (reduced) { navigate(href); return }
+    setTimeout(() => navigate(href), 110)
+  }
+
   return (
     <section id="projects" style={{ backgroundColor: '#F0E8D4', color: '#111008' }}>
       <div className="page-px" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
         <div style={{ border: '1px solid #111008', padding: '24px' }}>
 
-          {/* Header */}
-          <div className="flex items-center justify-between" style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '14px 20px' }}>
+          {/* Header — ink fade-in */}
+          <motion.div
+            className="flex items-center justify-between"
+            style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '14px 20px' }}
+            initial={reduced ? false : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <h2 className="font-playfair font-bold uppercase" style={{ fontSize: '32px' }}>
               Projects
             </h2>
             <span className="font-barlow" style={{ fontSize: '11px', color: '#F0EBE0', letterSpacing: '0.15em' }}>
               7 Projects · UI/UX &amp; Visual
             </span>
-          </div>
+          </motion.div>
 
           {/* Filter tabs */}
           <div className="flex" style={{ borderTop: '1px solid #111008', borderBottom: '2px solid #111008' }}>
@@ -113,6 +130,7 @@ export default function NewProjects() {
                   borderRight: i < filters.length - 1 ? '2px solid #111008' : 'none',
                   backgroundColor: activeFilter === f ? '#111008' : 'transparent',
                   color: activeFilter === f ? '#F0EBE0' : '#111008',
+                  transition: 'background-color 0.3s ease, color 0.3s ease',
                 }}
               >
                 {f}
@@ -122,8 +140,12 @@ export default function NewProjects() {
 
           {/* Project grid — rows: 2 | 2 | 3 */}
           {visibleRows.map(({ row, originalIdx }) => (
-            <div
+            <motion.div
               key={originalIdx}
+              initial={reduced ? false : 'hidden'}
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={staggerContainer}
               style={{
                 display: 'grid',
                 gridTemplateColumns: originalIdx === 0 ? '35fr 65fr' : originalIdx === 1 ? '1fr 1fr' : '1fr 1fr 1fr',
@@ -132,11 +154,25 @@ export default function NewProjects() {
               }}
             >
               {row.map((project, colIdx) => (
-                <div
+                <motion.div
                   key={project.number}
                   className="project-card"
-                  onClick={() => project.href !== '#' && navigate(project.href)}
-                  style={{ borderTop: '0.5px solid #111008', borderBottom: originalIdx === 2 ? '1px solid #111008' : '0.5px solid #111008', borderRight: colIdx < row.length - 1 ? '1px solid #111008' : 'none', display: 'flex', flexDirection: 'column', cursor: project.href !== '#' ? 'pointer' : 'default' }}
+                  variants={fadeUp}
+                  whileHover={reduced ? {} : { y: -5, zIndex: 1 }}
+                  whileTap={reduced ? {} : { y: 2, zIndex: 1 }}
+                  transition={paperSpring}
+                  onClick={() => handleCardClick(project.href)}
+                  style={{
+                    borderTop: '0.5px solid #111008',
+                    borderBottom: originalIdx === 2 ? '1px solid #111008' : '0.5px solid #111008',
+                    borderRight: colIdx < row.length - 1 ? '1px solid #111008' : 'none',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    cursor: project.href !== '#' ? 'pointer' : 'default',
+                    backgroundColor: '#F0E8D4',
+                    position: 'relative',
+                    zIndex: 0,
+                  }}
                 >
                   {/* Category bar */}
                   <div style={{ padding: '12px 16px 8px' }}>
@@ -149,11 +185,9 @@ export default function NewProjects() {
                   <div style={{ padding: '20px 20px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     {/* Number + title */}
                     <div className="flex" style={{ gap: '16px', marginBottom: '20px' }}>
-                      {/* Number */}
                       <span className="font-playfair font-bold" style={{ fontSize: '42px', lineHeight: '1', opacity: 0.2, flexShrink: 0 }}>
                         {project.number}
                       </span>
-                      {/* Title + desc */}
                       <div>
                         <h3 className="font-playfair font-bold" style={{ fontSize: '17px', lineHeight: '1.3', marginBottom: '10px' }}>
                           {project.title}
@@ -205,9 +239,9 @@ export default function NewProjects() {
                       )}
                     </div>}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ))}
 
         </div>
