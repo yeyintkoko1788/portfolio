@@ -271,7 +271,12 @@ export default function NewWorkTogether() {
           <span style={{ opacity: 0.35 }}>·</span>
           <span>Nang · Portfolio</span>
           <span style={{ opacity: 0.35 }}>·</span>
-          <span style={{ textTransform: 'lowercase', letterSpacing: '0.05em', fontSize: '15px' }}>nang.atelier@gmail.com</span>
+          <a
+            href="mailto:nang.atelier@gmail.com"
+            style={{ textTransform: 'lowercase', letterSpacing: '0.05em', fontSize: '15px', color: 'inherit', textDecoration: 'none' }}
+          >
+            nang.atelier@gmail.com
+          </a>
           <span style={{ opacity: 0.35 }}>·</span>
           <span>© 2026</span>
         </div>
