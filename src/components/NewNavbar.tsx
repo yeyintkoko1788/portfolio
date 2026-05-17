@@ -7,7 +7,7 @@ export default function NewNavbar() {
           Portfolio / Vol. 1
         </span>
         <span className="text-[11px] tracking-[0.22em] uppercase font-barlow" style={{ textAlign: 'center' }}>
-          · UI/UX &amp; Visual Designer ·
+          · Visual &amp; UI/UX Designer ·
         </span>
         <span className="border border-[#111008] text-[11px] tracking-[0.18em] font-barlow font-medium" style={{ padding: '2px 12px', justifySelf: 'end' }}>
           2025–2026
@@ -17,7 +17,7 @@ export default function NewNavbar() {
       {/* Nav strip */}
       <div className="flex items-center justify-between page-px py-2.5 border-b border-[#111008]" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
         <span className="text-[11px] tracking-[0.14em] uppercase font-barlow text-[#111008]/70">
-            Design Archive · Vol. 01 · Nang Atelier
+            BEST VIEW ON DESKTOP
         </span>
         <nav className="flex items-center text-[11px] tracking-[0.18em] uppercase font-barlow font-semibold gap-1">
           <a href="#projects" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }} className="hover:opacity-60 transition-opacity px-2">Projects</a>
