@@ -277,7 +277,8 @@ export default function NewAdidasDetail() {
           <div style={{ padding: '24px 0 0' }}>
             <div>
               <p className="font-eb-garamond" style={{ fontSize: '15px', lineHeight: 1.75, opacity: 0.8 }}>
-                Navigation gaps are harder to catch than broken flows because nothing visibly fails.              </p>
+                  Navigation gaps are harder to catch than broken flows because nothing visibly fails. Working within an existing brand system meant the fix had to be invisible, additions that felt like they were always there.            
+              </p>
             </div>
           </div>
         </div>

@@ -350,17 +350,10 @@ export default function NewEmailDetail() {
                 The original descriptions are short and poetic, communicating how each scent will feel on your skin like sensory, emotional, embodied. Mine are more informational. Someone deciding whether to buy on a first-ever whiff needs more to act on. Whether that's the right call depends on the campaign goal.
               </p>
             </div>
+            
           </div>
 
-          {/* What I'd Do Differently */}
-          <div style={{ marginTop: '32px' }}>
-            <div style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '10px 20px', marginBottom: '20px' }}>
-              <span className="font-oswald" style={{ fontSize: '13px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>What I'd Do Differently</span>
-            </div>
-            <p className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.85, marginBottom: '24px' }}>
-              The image direction was the wrong call for this brand. Glossier's identity lives in lifestyle photography like skin, texture, real people, natural light and the original curvy that. Product shots paired with ingredient close-ups belong to a more clinical brand language. In a real execution, I'd keep the structural changes and shoot everything as lifestyle instead.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginTop:'24px' }}>
               <div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '10px' }}>
                   {['/images/email-scr6.png', '/images/email-scr7.png'].map((src, i) => (
@@ -378,6 +371,15 @@ export default function NewEmailDetail() {
                 <p className="font-barlow" style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', textAlign: 'center' }}>Redesign</p>
               </div>
             </div>
+
+          {/* What I'd Do Differently */}
+          <div style={{ marginTop: '32px' }}>
+            <div style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '10px 20px', marginBottom: '20px' }}>
+              <span className="font-oswald" style={{ fontSize: '13px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>What I'd Do Differently</span>
+            </div>
+            <p className="font-eb-garamond" style={{ fontSize: '14px', lineHeight: 1.85, marginBottom: '24px' }}>
+              The image direction was the wrong call for this brand. Glossier's identity lives in lifestyle photography like skin, texture, real people, natural light and the original curvy that. Product shots paired with ingredient close-ups belong to a more clinical brand language. In a real execution, I'd keep the structural changes and shoot everything as lifestyle instead.
+            </p>
           </div>
         </div>
 

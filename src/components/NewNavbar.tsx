@@ -17,7 +17,7 @@ export default function NewNavbar() {
       {/* Nav strip */}
       <div className="flex items-center justify-between page-px py-2.5 border-b border-[#111008]" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
         <span className="text-[11px] tracking-[0.14em] uppercase font-barlow text-[#111008]/70">
-          Career Switcher | Self-Taught Designer | Former-Educator
+            Design Archive · Vol. 01 · Nang Atelier
         </span>
         <nav className="flex items-center text-[11px] tracking-[0.18em] uppercase font-barlow font-semibold gap-1">
           <a href="#projects" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }} className="hover:opacity-60 transition-opacity px-2">Projects</a>

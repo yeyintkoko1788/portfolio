@@ -66,7 +66,7 @@ export default function NewHero() {
       />
 
       {/* Vintage world map — background texture */}
-      <img
+      {/* <img
         src="/images/hero-map.png"
         draggable={false}
         style={{
@@ -85,7 +85,7 @@ export default function NewHero() {
           userSelect: 'none',
           zIndex: 0,
         }}
-      />
+      /> */}
 
       {/* Ink splatter corners */}
       {inkCorners.map(({ src, pos, delay }) => (

@@ -44,7 +44,7 @@ const projects = [
     number: '05',
     category: 'Visual Design · Print',
     title: 'Horror Short Story Collection — Book Cover',
-    desc: 'Commissioned cover. Lead piece for visual design section. Commission-level. Lead piece for visual design section.',
+    desc: 'Commissioned cover for a surrealist fiction collection. First paid client project. Real brief, real client, printed and delivered.',
     image: '/images/proj-bc.png',
     href: '/projects/book-cover',
     tags : ['Print', 'Art Direction', 'Typography']
@@ -62,7 +62,7 @@ const projects = [
     number: '07',
     category: 'Branding · Identity',
     title: 'Karotte Collection Branding',
-    desc: 'Full brand identity system for an independent fashion label.',
+    desc: 'Retrospective brand identity for Karotte Collection, a slow-fashion linen label I founded, built, and ran solo in Myanmar.',
     image: '/images/proj-karotte.png',
     href: '/projects/karotte',
     tags : ['Logo', 'Palette', 'Type System']
