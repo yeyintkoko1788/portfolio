@@ -58,7 +58,7 @@ export default function NewEmailDetail() {
             className="font-playfair"
             style={{ fontSize: '52px', fontWeight: 700, textTransform: 'uppercase', lineHeight: 1.05, letterSpacing: '-0.5px', textAlign: 'center', marginTop: '20px' }}
           >
-            Email Redesigns – Vivaia, Tripadvisor, Nike, Glossier
+            Email Marketing Redesigns
           </h1>
 
           {/* Divider */}

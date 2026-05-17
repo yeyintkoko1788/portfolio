@@ -17,7 +17,7 @@ const timeline = [
   {
     years: '2020–2023',
     role: 'FASHION',
-    text: 'Founded Karotta Collection, a slow-fashion fairy brand built from scratch, by hand, with zero business experience and zero losses.',
+    text: 'Founded Karotte Collection, a slow-fashion fairy brand built from scratch, by hand, with zero business experience and zero losses.',
   },
   {
     years: '2023–2025',

@@ -250,7 +250,7 @@ export default function NewKarotteDetail() {
             { title: 'Fabric Decode Sustainability Tool', image: '/images/proj-fabric.png', href: '/projects/fabric-decode' },
             { title: 'Vera Vintage Fashion Platform', image: '/images/proj-vera.png', href: '/projects/vera' },
             { title: 'Commission Horror Book Cover', image: '/images/proj-bc.png', href: '/projects/book-cover' },
-            { title: 'Email Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
+            { title: 'Email Marketing Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
           ].map(({ title, image, href }) => (
             <a key={title} href={href} style={{ textDecoration: 'none', color: 'inherit', border: '1px solid #111008', display: 'block', flexShrink: 0, width: '280px' }}>
               <div style={{ backgroundColor: '#111008', color: '#F0EBE0', padding: '12px 16px', minHeight: '65px', display: 'flex', alignItems: 'center' }}>

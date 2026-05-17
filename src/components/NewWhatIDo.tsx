@@ -3,14 +3,14 @@ import { fadeUp, staggerContainer, viewportOnce } from '../lib/motionConfig'
 
 const services = [
   {
+    icon: '/images/eye.png',
+    title: 'Visual Design',
+    text: 'Posters, book covers, brand identity, email design. I work from a brief and build toward something with a clear point of view where typography, colour, and composition aren\'t decoration but argument. If it needs to look intentional and mean something, this is where I work best.',
+  },
+  {
     icon: '/images/dots-nine.png',
     title: 'UI/UX Design',
     text: 'From mobile apps to desktop interfaces. I focus on layout, hierarchy, and the visual layer, making sure it looks good and holds up under real use.',
-  },
-  {
-    icon: '/images/eye.png',
-    title: 'Visual Design',
-    text: 'Posters, book covers, brand identity, email design. If it needs to look intentional and say something, this is where I work best.',
   },
 ]
 

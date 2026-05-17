@@ -66,9 +66,8 @@ export default function NewFeaturedReview() {
 
           {/* Quote */}
           <p className="font-old-standard" style={{ fontSize: '16px', lineHeight: '1.8', textAlign: 'center', maxWidth: '760px', marginBottom: '24px' }}>
-            I recently had to jump on 10+ different calls across eight different countries to find the right owner.
+              Working with Nang was smooth and collaborative. The final book cover matched the vision I had in mind while still feeling professional and visually appealing.           
           </p>
-
           {/* Divider */}
           <div style={{ width: '60px', height: '1px', backgroundColor: '#111008', marginBottom: '20px' }} />
 

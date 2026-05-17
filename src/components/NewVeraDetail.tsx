@@ -403,7 +403,7 @@ export default function NewVeraDetail() {
             { title: 'Adidas Korea × Enhypen Campaign', image: '/images/proj-lookbook.png', href: '/projects/adidas-korea' },
             { title: 'Fabric Decode Sustainability Tool', image: '/images/proj-fabric.png', href: '/projects/fabric-decode' },
             { title: 'Commission Horror Book Cover', image: '/images/proj-bc.png', href: '/projects/book-cover' },
-            { title: 'Email Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
+            { title: 'Email Marketing Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
             { title: 'Karotte Collection Branding', image: '/images/proj-karotte.png', href: '/projects/karotte' },
           ].map(({ title, image, href }) => (
             <a

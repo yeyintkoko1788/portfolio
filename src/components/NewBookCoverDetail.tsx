@@ -251,7 +251,7 @@ Technically, rebuilding a 27–42 DPI painting into a print-ready 300 DPI wrap w
             { title: 'Adidas Korea × Enhypen Campaign', image: '/images/proj-lookbook.png', href: '/projects/adidas-korea' },
             { title: 'Fabric Decode Sustainability Tool', image: '/images/proj-fabric.png', href: '/projects/fabric-decode' },
             { title: 'Vera Vintage Fashion Platform', image: '/images/proj-vera.png', href: '/projects/vera' },
-            { title: 'Email Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
+            { title: 'Email Marketing Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
             { title: 'Karotte Collection Branding', image: '/images/proj-karotte.png', href: '/projects/karotte' },
           ].map(({ title, image, href }) => (
             <a key={title} href={href !== '#' ? href : undefined} style={{ textDecoration: 'none', color: 'inherit', cursor: href !== '#' ? 'pointer' : 'default', border: '1px solid #111008', display: 'block', flexShrink: 0, width: '280px' }}>

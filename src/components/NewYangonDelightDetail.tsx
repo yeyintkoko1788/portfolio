@@ -249,8 +249,8 @@ export default function NewYangonDelightDetail() {
 
             {/* Navigation */}
             <div style={{ padding: '28px 0 32px' }}>
-              <p className="font-playfair font-medium" style={{ fontSize: '16px', textTransform: 'uppercase', marginBottom: '8px'}}>Navigation - from 9 buried items to 1-click access</p>
-              <h3 className="font-playfair font-regular" style={{ fontSize: '16px', marginBottom: '24px' }}>The original nav forced users into a dropdown to find the most-used pages. The redesign surfaces all core actions at the top level and reduces total items by 33%.</h3>
+              <p className="font-playfair font-medium" style={{ fontSize: '16px', marginBottom: '8px', textTransform:'uppercase'}}>Navigation - Core Actions Surfaced, Secondary Content Stays Put</p>
+              <h3 className="font-playfair font-regular" style={{ fontSize: '16px', marginBottom: '24px' }}>The original nav hid Order Online, Catering, and Reserve inside a More dropdown alongside unrelated content. The redesign surfaces every core restaurant action at the top level. Secondary content which are Community & Impact, Rewards, Blog stay accessible under More, where it belongs.</h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div>
                   <div style={beforeAfterLabel('before')}>BEFORE — CORE ACTIONS HIDDEN IN DROPDOWN</div>
@@ -413,7 +413,7 @@ The job listings had no descriptions and two buttons that opened identical email
             { title: 'Fabric Decode Sustainability Tool', image: '/images/proj-fabric.png', href: '/projects/fabric-decode' },
             { title: 'Vera Vintage Fashion Platform', image: '/images/proj-vera.png', href: '/projects/vera' },
             { title: 'Commission Horror Book Cover', image: '/images/proj-bc.png', href: '/projects/book-cover' },
-            { title: 'Email Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
+            { title: 'Email Marketing Redesigns', image: '/images/proj-email.png', href: '/projects/email-redesign' },
             { title: 'Karotte Collection Branding', image: '/images/proj-karotte.png', href: '/projects/karotte' },
           ].map(({ title, image, href }) => (
             <a

@@ -119,15 +119,19 @@ export default function NewHero() {
             position: 'absolute',
             width,
             rotate,
-            pointerEvents: 'none',
             userSelect: 'none',
             mixBlendMode: 'multiply',
             zIndex: 3,
             ...pos,
           }}
-          initial={reduced ? false : { opacity: 0, scale: 0.88 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: UNROLL + delay, ease: [0.25, 0.1, 0.25, 1] }}
+          variants={{
+            hidden:   { opacity: 0, scale: 0.88 },
+            visible:  { opacity: 1, scale: 1,   transition: { duration: 0.6, delay: UNROLL + delay, ease: [0.25, 0.1, 0.25, 1] as const } },
+            hover:    { scale: 1.1, y: -5,      transition: { type: 'spring', stiffness: 300, damping: 18 } },
+          }}
+          initial={reduced ? false : 'hidden'}
+          animate="visible"
+          whileHover={reduced ? undefined : 'hover'}
         />
       ))}
 
@@ -136,9 +140,14 @@ export default function NewHero() {
         src="/images/hero-stamp.png"
         draggable={false}
         style={{ position: 'absolute', top: '100px', right: '380px', width: '120px', zIndex: 3, userSelect: 'none' }}
-        initial={reduced ? false : { opacity: 0, scale: 1.15, rotate: 6 }}
-        animate={{ opacity: 1, scale: 1, rotate: 12 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 14, delay: UNROLL + 1.1 }}
+        variants={{
+          hidden:  { opacity: 0, scale: 1.15, rotate: 6 },
+          visible: { opacity: 1, scale: 1,    rotate: 12, transition: { type: 'spring', stiffness: 120, damping: 14, delay: UNROLL + 1.1 } },
+          hover:   { scale: 1.08, y: -4,                 transition: { type: 'spring', stiffness: 300, damping: 18 } },
+        }}
+        initial={reduced ? false : 'hidden'}
+        animate="visible"
+        whileHover={reduced ? undefined : 'hover'}
       />
 
       {/* Left vertical label */}
@@ -220,9 +229,14 @@ export default function NewHero() {
               className="select-none"
               draggable={false}
               style={{ width: '65vw', maxWidth: '780px' }}
-              initial={reduced ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: UNROLL + 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+              variants={{
+                hidden:  { opacity: 0 },
+                visible: { opacity: 1,    transition: { duration: 1.2, delay: UNROLL + 0.28, ease: [0.25, 0.1, 0.25, 1] as const } },
+                hover:   { scale: 1.05, y: -3, transition: { type: 'spring', stiffness: 260, damping: 22 } },
+              }}
+              initial={reduced ? false : 'hidden'}
+              animate="visible"
+              whileHover={reduced ? undefined : 'hover'}
             />
 
             <motion.p
@@ -242,7 +256,7 @@ export default function NewHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: UNROLL + 0.85, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              UI/UX &amp; Visual Designer
+              Visual &amp; UI/UX Designer
             </motion.p>
 
           </div>

@@ -52,7 +52,7 @@ const projects = [
   {
     number: '06',
     category: 'Email Design · Campaign',
-    title: 'Vivaia Marketing Redesign',
+    title: 'Email Marketing Redesigns',
     desc: 'VIVAIA, TRIP ADVISOR, NIKE and GLOSSIER. Four emails with real problems. One designer who couldn\'t scroll past without fixing them.',
     image: '/images/proj-email.png',
     href: '/projects/email-redesign',
