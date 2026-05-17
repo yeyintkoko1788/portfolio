@@ -129,7 +129,7 @@ export default function NewEmailDetail() {
               {/* Arrow + spinning badge */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, marginBottom:'100px'}}>
                 <img src="/images/email-arrow.png" alt="" style={{ width: '80px', display: 'block' }} />
-                <img src="/images/vera-prototype-badge.png" alt="" className="spin-slow" style={{ width: '80px', height: '80px', display: 'block' }} />
+                <img src="/images/email-taphere.png" alt="" className="spin-slow" style={{ width: '80px', height: '80px', display: 'block' }} />
               </div>
             </div>
           </div>
