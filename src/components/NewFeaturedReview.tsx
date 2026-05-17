@@ -17,7 +17,7 @@ export default function NewFeaturedReview() {
 
         {/* Review card — fades and rises into view */}
         <motion.div
-          style={{ backgroundColor: '#E8E2D4', border: '1px solid #111008', borderTop: 'none', padding: '48px 24px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          style={{ backgroundColor: '#F0E8D4', border: '1px solid #111008', borderTop: 'none', padding: '48px 24px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
           initial={reduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}

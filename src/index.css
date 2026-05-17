@@ -170,7 +170,15 @@
 }
 
 *, *:hover, a, a:hover, button, button:hover, [role="button"] {
-  cursor: url('/images/cursor.png') 0 0, auto !important;
+  cursor: url('/images/cursor-dark.svg') 0 0, auto !important;
+}
+
+/* White cursor on dark backgrounds */
+.bg-\[\#111008\] *, .bg-\[\#111008\]:hover,
+.on-dark, .on-dark *,
+[style*="background-color: #111008"] *,
+[style*="background-color:#111008"] * {
+  cursor: url('/images/cursor-white.svg') 0 0, auto !important;
 }
 
 html {
@@ -202,6 +210,20 @@ body {
 
 .spin-slow {
   animation: spin-slow 12s linear infinite;
+}
+
+/* ── Vintage paper texture ───────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/images/paper-texture.avif');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 9997;
 }
 
 /* ── Grain overlay — static film-grain texture at 2.5 % opacity ─────────── */

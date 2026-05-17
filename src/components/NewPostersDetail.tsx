@@ -62,7 +62,7 @@ export default function NewPostersDetail() {
             .lightbox-overlay *,
             .lightbox-overlay *:hover,
             .lightbox-overlay button,
-            .lightbox-overlay button:hover { cursor: url('/images/cursor-white.png') 0 0, auto !important; }
+            .lightbox-overlay button:hover { cursor: url('/images/cursor-white.svg') 0 0, auto !important; }
             .lightbox-btn:hover { opacity: 1 !important; border-color: rgba(240,235,224,0.8) !important; }
           `}</style>
 
